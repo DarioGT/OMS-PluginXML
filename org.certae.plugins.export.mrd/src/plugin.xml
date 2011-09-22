@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin format="2.0" className = "org.certae.plugins.export.mrd.ExportXMLPlugin">
+
+    <name>${name}</name>
+    <description>${description}</description>
+	<image>${image}</image>
+	<license>${license}</license>
+	<resourceBundle>locale</resourceBundle>
+    <date>24-06-2011</date>
+	<version>1.1.0</version>
+	<author>CeRTAE</author>
+	<authorURL>${url}</authorURL>
+	<authorEmail>${email}</authorEmail>
+	<type>org.modelsphere.jack.plugins.Plugin</type>
+    <requiredBuild>950</requiredBuild>
+
+    <extension className="org.modelsphere.jack.plugins.xml.extensions.PopupExtension">
+    	<actionLabel>${name}</actionLabel>
+    	<metaClasses>org.modelsphere.sms.or.db.DbORModel,org.modelsphere.sms.db.DbSMSProject</metaClasses>
+    	<popupSubmenu>generate</popupSubmenu>
+    </extension>
+
+	<jar>lib/plugin.jar</jar>
+
+</plugin>
