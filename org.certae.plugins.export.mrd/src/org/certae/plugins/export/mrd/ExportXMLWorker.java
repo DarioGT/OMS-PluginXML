@@ -47,7 +47,8 @@ import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
+import org.w3c.dom.Text; 
+import org.w3c.dom.Comment; 
 
 public class ExportXMLWorker extends Worker {
 
@@ -105,10 +106,46 @@ public class ExportXMLWorker extends Worker {
 
 		// Document.
 		// pattern = "<project name=\"{0}\">"; 
-		xmldoc = impl.createDocument( null, "project", null);
+		xmldoc = impl.createDocument( null, "domains", null);
 		Element root = xmldoc.getDocumentElement();
-		root.setAttribute( "name", projectName);
+		
+//		root.setAttribute( "name", projectName);
+		Element xChild = xmldoc.createElement("Ejemplo");
+		root.appendChild(xChild);
+	
+	  //create a comment and put it in the xChild element
+		Comment comment = xmldoc.createComment("Comentario"); 
+		xChild.appendChild(comment);
+	
+	  //create child element, add an attribute, and add to xChild
+		Element child = xmldoc.createElement("child");
+		child.setAttribute("name", "value");
+		xChild.appendChild(child);
+	
+	  //add a text element to the child
+		Text text = xmldoc.createTextNode("Filler, ... I could have had a foo!");
+		child.appendChild(text);
+		
+		
+//	    Element xChild = xmldoc.createElement("code");
+//	    root.appendChild(xChild);
+//	    Text elmnt = xmldoc.createTextNode(projectName);
+//	    xChild.appendChild(elmnt);
+		
+		
+		//   ******** <nodo>Employee:spring</nodo>
+//	    Document doc = builder.newDocument();
+//	    Element rootx = xmldoc.createElement("nodo");
+//	       xmldoc.appendChild(rootx);
+//	    Text elmnt= xmldoc.createTextNode("Employee");
+//	       rootx.appendChild(elmnt);
+//	    Text childElement = xmldoc.createTextNode(":spring");
+//	          root.appendChild(childElement);
 
+		//   ********
+		
+		
+		
 		//generate UDFs  
 		generateUDFs(root); 
 
