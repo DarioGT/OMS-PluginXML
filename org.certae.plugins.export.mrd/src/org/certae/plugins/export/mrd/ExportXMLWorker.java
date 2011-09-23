@@ -224,14 +224,14 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateUDFs(Element root) throws DbException {
 
-		Element e = xmldoc.createElement("udfs");
+		Element e = xmldoc.createElement("udps");
 		Node xnUdfs = root.appendChild(e);
 
 		//	pattern = "<udf name=\"{0}\" type=\"{1}\" alias=\"{2}\" description=\"{3}\" />";
 		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		for (DbUdfWrapper udf : uDfs ) {
 
-			e = xmldoc.createElement( "udf");
+			e = xmldoc.createElement( "udp");
 //			e.setAttribute("name", udf.getName());
 //			e.setAttribute("type", udf.getType());
 //			e.setAttribute("alias", udf.getAlias());
@@ -296,8 +296,8 @@ public class ExportXMLWorker extends Worker {
 			addChildValue( e, "name", wRef.getPairName());
 
 //  Para debuguer 			
-//			generateAssociationsEnd(xnRel, wRef.getBase(), "r0"); 
-//			generateAssociationsEnd(xnRel, wRef.getRefe(), "r1"); 
+			generateAssociationsEnd(xnRel, wRef.getBase(), "r0"); 
+			generateAssociationsEnd(xnRel, wRef.getRefe(), "r1"); 
 
 		}
 		
@@ -414,34 +414,33 @@ public class ExportXMLWorker extends Worker {
 		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "primary", s);
  		s = (wCol.isForeign())? "True" : "False"; addChildValue( e, "foreign", s);
 
+// 		String sAux = '"' + wCol.getDescription() + '"'; 
+//// 	if ((sAux != null ) && (sAux.length() > 1024)){ sAux = sAux.substring(0, 1023); } 
+// 		addChildValue( e, "description", sAux);
 		
-		
-		// Udfs   OJO
-//		generateColUdfs(xnCl, wCol); 
-
+		// Udfs  
+ 		generateColUdfs(xnCl, wCol); 
 }
 
 	private void generateColUdfs(Element xnCl, DbColumnWrapper wCol) throws DbException {
-		//  pattern = "<udfs>";
+//		The UDP can be extremely long, you need to be formatted q, if 
+//		added with no formatting goes straight AddTextNode therefore necessary 
+//		add an attribute or add "" 
 		
-		Element e = xmldoc.createElement("udfs");
+		Element e = xmldoc.createElement("udps");
 		Node xnUdfs = xnCl.appendChild(e);
 		
 		//	pattern = "<udf name=\"{0}\" value=\"{1}\"/>";
-		e = xmldoc.createElement("udf");
-//		e.setAttribute("description", wCol.getDescription());
+		e = xmldoc.createElement("description");
+		e.setAttribute("text", wCol.getDescription());
 		xnUdfs.appendChild(e);
-
-		addChildValue( e, "description", wCol.getDescription());
 
 		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		for (DbUdfWrapper udf : uDfs ) {
 
-			e = xmldoc.createElement( "udf");
-//			e.setAttribute(udf.getAlias(), wCol.getUdfValue(udf.getName()));
+			e = xmldoc.createElement( udf.getAlias());
+			e.setAttribute( "text", wCol.getUdfValue(udf.getName()));
 			xnUdfs.appendChild(e);
-			
-			addChildValue( e, udf.getAlias(), wCol.getUdfValue(udf.getName()));
 
 		}
 
