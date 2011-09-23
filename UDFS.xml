@@ -1,0 +1,1215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domains>
+<origin>OpenModelSphere 3.2</origin>
+<udfs>
+<udf>
+<code>FORMAT</code>
+<type>Multiline Text</type>
+<alias>FORMAT</alias>
+<description/>
+</udf>
+<udf>
+<code>GABARIT</code>
+<type>Multiline Text</type>
+<alias>GABARIT</alias>
+<description/>
+</udf>
+<udf>
+<code>DÉFINITION</code>
+<type>Multiline Text</type>
+<alias>DEFINITION</alias>
+<description/>
+</udf>
+<udf>
+<code>DESCRIPTION CN</code>
+<type>Multiline Text</type>
+<alias>DESCRIPTIONCN</alias>
+<description/>
+</udf>
+<udf>
+<code>PRÉCISIONS</code>
+<type>Multiline Text</type>
+<alias>PRECISIONS</alias>
+<description/>
+</udf>
+<udf>
+<code>VALIDATIONS SUR ÉLÉMENT</code>
+<type>Multiline Text</type>
+<alias>VALIDATIONSSURELEMENT</alias>
+<description/>
+</udf>
+<udf>
+<code>REQUIS PAR</code>
+<type>Multiline Text</type>
+<alias>REQUISPAR</alias>
+<description/>
+</udf>
+<udf>
+<code>SOURCE DE DONNÉES EXTERNES</code>
+<type>Multiline Text</type>
+<alias>SOURCEDEDONNEESEXTERNES</alias>
+<description/>
+</udf>
+<udf>
+<code>TRANSMISSION</code>
+<type>Multiline Text</type>
+<alias>TRANSMISSION</alias>
+<description/>
+</udf>
+<udf>
+<code>VALIDATIONS INTER-ÉLÉMENTS</code>
+<type>Multiline Text</type>
+<alias>VALIDATIONSINTERELEMENTS</alias>
+<description/>
+</udf>
+<udf>
+<code>DOMAINE DE VALEURS</code>
+<type>Multiline Text</type>
+<alias>DOMAINEDEVALEURS</alias>
+<description/>
+</udf>
+</udfs>
+<domain>
+<name>UDFS</name>
+<models>
+<model idmodel="1" idref="0">
+<code>SL - SIGSPU</code>
+<concepts>
+<concept>
+<code>PRISE APPEL </code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Date/heure de l'entrée de l'appel téléphonique au CCS</code>
+<alias>101</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la réponse de l'appel téléphonique au CCS</code>
+<alias>102</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de l'avis au répartiteur</code>
+<alias>104</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la fin de l'appel du RMU</code>
+<alias>110</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Raison de la fin de l'appel téléphonique</code>
+<alias>215</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Identification de l'organisme transmetteur de l'appel</code>
+<alias>405</alias>
+<physicalName/>
+<superColumn/>
+<type>?(3)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>(PRISE EN CHARGE)</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Date/heure de la mise en route vers le lieu de prise en charge de l'usager</code>
+<alias>108</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la ressource ambulancière auprés de l'usager</code>
+<alias>114</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de l'arrivée de la ressource ambulancière sur le lieu de prise en charge de l'usager</code>
+<alias>115</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure du départ du lieu de prise en charge de l'usager</code>
+<alias>116</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>LIEU</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code du lieu </code>
+<alias>401, 402</alias>
+<physicalName/>
+<superColumn/>
+<type>?(8)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Type de lieu </code>
+<alias>216, 217</alias>
+<physicalName/>
+<superColumn/>
+<type>?(3)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Géoréférentiel latitude </code>
+<alias>201, 202</alias>
+<physicalName/>
+<superColumn/>
+<type>?(9)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Géoréférentiel longitude </code>
+<alias>203, 204</alias>
+<physicalName/>
+<superColumn/>
+<type>?(9)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>CCS</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Numéro CCS</code>
+<alias>314</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Indicateur CCS en mode production ou en relève</code>
+<alias>205</alias>
+<physicalName/>
+<superColumn/>
+<type>?(1)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Type CCS???</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>MUNICIPALITÉ</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code municipalité </code>
+<alias>206, 207</alias>
+<physicalName/>
+<superColumn/>
+<type>?(5)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom municipalité</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Numéro de carte d'appel</code>
+<alias>208</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Numéro de carte mère - événement avec création de cartes d'appel multiples</code>
+<alias>209</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de l'identification de la nature de l'appel téléphonique </code>
+<alias>103</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Déterminant ou nature de la demande</code>
+<alias>200</alias>
+<physicalName/>
+<superColumn/>
+<type>?(8)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Origine de la demande</code>
+<alias>212</alias>
+<physicalName/>
+<superColumn/>
+<type>?(1)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>VÉHICULE</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Numéro de véhicule</code>
+<alias>210</alias>
+<physicalName/>
+<superColumn/>
+<type>?(4)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>STATUT RESSOURCE PRÉHOSPITALIÈRE</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Statut et activité de la ressource ambulancière</code>
+<alias>316</alias>
+<physicalName/>
+<superColumn/>
+<type>?(9)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/Heure du statut de la ressource ambulancière</code>
+<alias>306</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>AFFECTATION RESSOURCE</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Numéro séquentiel d'affectation de la ressource</code>
+<alias>211</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Priorité d'affectation</code>
+<alias>213</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la fin de l'affectation</code>
+<alias>119</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Raison de la fin de l'affectation</code>
+<alias>214</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la transmission de l'affectation</code>
+<alias>106</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la confirmation de l'affectation</code>
+<alias>107</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Annulation de l'affectation?????</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure de la libération de l'équipement</code>
+<alias>118</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/heure du retour sur le territoire desservi par le CCS</code>
+<alias>120</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>QUART DE TRAVAIL</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code de quart de travail CCS</code>
+<alias>301</alias>
+<physicalName/>
+<superColumn/>
+<type>?(1)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Numéro séquentiel du quart de travail</code>
+<alias>315</alias>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Autre motif expliquant l'ajout ou l'annulation d'un quart de travail ambulancier</code>
+<alias>300</alias>
+<physicalName/>
+<superColumn/>
+<type>?(200)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/Heure du début du quart pour la ressource ambulancière</code>
+<alias>305</alias>
+<physicalName/>
+<superColumn/>
+<type>?(16)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date/Heure de la fin du quart pour la ressource ambulancière</code>
+<alias>304</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nombre d'employés par quart de travail par CCS</code>
+<alias>310</alias>
+<physicalName/>
+<superColumn/>
+<type>?(3)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>EMPLOI</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code de titre d'emploi CCS</code>
+<alias>303</alias>
+<physicalName/>
+<superColumn/>
+<type>?(1)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nombre d'employés par titre d'emploi par CCS</code>
+<alias>312</alias>
+<physicalName/>
+<superColumn/>
+<type>?(3)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nombre d'équivalents temps complet par titre d'emploi par CCS ???</code>
+<alias>313</alias>
+<physicalName/>
+<superColumn/>
+<type>?(3)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nombre d'employés par statut d'emploi par CCS</code>
+<alias>311</alias>
+<physicalName/>
+<superColumn/>
+<type>?(3)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>ZONE AMBULANCIÈRE </code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code zone ambulancière </code>
+<alias>218, 219</alias>
+<physicalName/>
+<superColumn/>
+<type>?(5)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom zone ambulancière</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>RSS</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code region sociosanitaire</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?(4)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom region sociosanitaie</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>DESTINATION</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Date/heure de l'arrivée au lieu de destination</code>
+<alias>117</alias>
+<physicalName/>
+<superColumn/>
+<type>?(14)</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>ÉTABLISSEMENT</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Numéro de permis ODS</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom légal Établissement</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom abrégé Établissement</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Statut Établissement</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Mode financement ODS</code>
+<alias/>
+<physicalName>RCAI_DOmod-finnc-orgns-dispn-servcQC01</physicalName>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Désignation ministérielle</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date délivrance permis</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date de début de validité</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Date de fin de validité</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Remarque d'information (Permis)</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Territoire C.L.S.C</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>M.R.C</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Circ. Électorale provinciale</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Territoire R.L.S desservi</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Type permis (à valider)</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Remarques permis (à valider)</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Numéro (MSSS)</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>identifiant type d'établissement</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>INSTALLATION</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Numéro au permis</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom légal installation</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Nom abrégé installation</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Surspécialité installation</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Territoire C.L.S.C</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Circ. Électorale provinciale</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+<property>
+<code>Numéro de permis ODS</code>
+<alias/>
+<physicalName/>
+<superColumn/>
+<type>?</type>
+<nullable>False</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>AUTRES ORGANISMES</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties/>
+</concept>
+<concept>
+<code>ASSIGNATION VÉHICULE</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties/>
+</concept>
+<concept>
+<code>STATUT EMPLOI</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code statut d'emploi CCS</code>
+<alias>302</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>ÉTAT QUART DE TRAVAIL</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Code état du quart de travail</code>
+<alias>307</alias>
+<physicalName/>
+<superColumn/>
+<type>?(1)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>MOTIF AJOUT QUART AMBULANCIER</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Motif expliquant l'ajout d'un quart ambulancier</code>
+<alias>308</alias>
+<physicalName/>
+<superColumn/>
+<type>?(1)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>MOTIF ANNULATION QUART AMBULANCIER</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Motif expliquant l'annulation d'un quart ambulancier</code>
+<alias>309</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>True</nullable>
+<primary>False</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>TYPE DE QUART DE TRAVAIL</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Type de quart de travail de la ressource ambulancière</code>
+<alias>317</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+<concept>
+<code>RESSOURCE PRÉHOSPITALIÈRE</code>
+<alias/>
+<physicalName/>
+<superTable/>
+<properties>
+<property>
+<code>Type de ressource préhospitalière</code>
+<alias>318</alias>
+<physicalName/>
+<superColumn/>
+<type>?(2)</type>
+<nullable>False</nullable>
+<primary>True</primary>
+<foreign>False</foreign>
+</property>
+</properties>
+</concept>
+</concepts>
+<neighbors>
+<neighbor>
+<LogicalName/>
+<name>STATUT RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-PRISE APPEL </name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>RSS-ZONE AMBULANCIÈRE </name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>ZONE AMBULANCIÈRE -MUNICIPALITÉ</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-AFFECTATION RESSOURCE</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>CCS-PRISE APPEL </name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>CCS-CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>MUNICIPALITÉ-(PRISE EN CHARGE)</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>LIEU-(PRISE EN CHARGE)</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>LIEU-DESTINATION</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>MUNICIPALITÉ-DESTINATION</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>ÉTABLISSEMENT-INSTALLATION</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>INSTALLATION-LIEU</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>AUTRES ORGANISMES-LIEU</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>MUNICIPALITÉ-ÉTABLISSEMENT</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>VÉHICULE-ASSIGNATION VÉHICULE</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>STATUT RESSOURCE PRÉHOSPITALIÈRE-ASSIGNATION VÉHICULE</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>CCS-QUART DE TRAVAIL</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>CCS-EMPLOI</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>STATUT RESSOURCE PRÉHOSPITALIÈRE-EMPLOI</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>EMPLOI-STATUT EMPLOI</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>QUART DE TRAVAIL-ÉTAT QUART DE TRAVAIL</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>ÉTAT QUART DE TRAVAIL-QUART DE TRAVAIL</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>MOTIF AJOUT QUART AMBULANCIER-QUART DE TRAVAIL</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>MOTIF ANNULATION QUART AMBULANCIER-QUART DE TRAVAIL</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>TYPE DE QUART DE TRAVAIL-QUART DE TRAVAIL</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>STATUT EMPLOI-EMPLOI</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>RESSOURCE PRÉHOSPITALIÈRE-STATUT RESSOURCE PRÉHOSPITALIÈRE</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE</name>
+</neighbor>
+<neighbor>
+<LogicalName/>
+<name>STATUT RESSOURCE PRÉHOSPITALIÈRE-RESSOURCE PRÉHOSPITALIÈRE</name>
+</neighbor>
+</neighbors>
+</model>
+</models>
+<linkModels/>
+</domain>
+</domains>

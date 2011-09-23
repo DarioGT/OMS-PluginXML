@@ -96,6 +96,46 @@ public class ExportXMLWorker extends Worker {
 
 	} //end runJob()
 
+	
+	private void addChildValue( Element nRoot , String nName , String nValue  ) 
+	{
+
+		Element xChild = xmldoc.createElement(nName);
+	    nRoot.appendChild(xChild);
+	    Text elmnt = xmldoc.createTextNode(nValue);
+	    xChild.appendChild(elmnt);
+
+//		  //create a comment and put it in the xChild element
+//			Element xChild = xmldoc.createElement("Ejemplo");
+//			root.appendChild(xChild);
+//			Comment comment = xmldoc.createComment("Comentario"); 
+//			xChild.appendChild(comment);
+	//	
+//		  //create child element, add an attribute, and add to xChild  
+//			Element child = xmldoc.createElement("child");
+//			child.setAttribute("name", "value");
+//			xChild.appendChild(child);
+	//	
+//		  //add a text element to the child
+//			Text text = xmldoc.createTextNode("Filler, ... I could have had a foo!");
+//			child.appendChild(text);
+	//			
+//	      //   ******** <nodo>Employee:spring</nodo>
+//		    Document doc = builder.newDocument();
+//		    Element rootx = xmldoc.createElement("nodo");
+//		       xmldoc.appendChild(rootx);
+//		    Text elmnt= xmldoc.createTextNode("Employee");
+//		       rootx.appendChild(elmnt);
+//		    Text childElement = xmldoc.createTextNode(":spring");
+//		          root.appendChild(childElement);
+
+			//   ********
+			
+	    
+		
+	}
+	
+	
 	private void generateProject(String projectName) 
 	throws Exception {
 
@@ -108,57 +148,32 @@ public class ExportXMLWorker extends Worker {
 		// pattern = "<project name=\"{0}\">"; 
 		xmldoc = impl.createDocument( null, "domains", null);
 		Element root = xmldoc.getDocumentElement();
+		addChildValue (root,  "origin", "OpenModelSphere 3.2"); 
+
+		//generate UDFs   
+		generateUDFs(root); 
+		
+		Element e = xmldoc.createElement("domain");
+		Element xDomain = (Element) root.appendChild(e);
 		
 //		root.setAttribute( "name", projectName);
-		Element xChild = xmldoc.createElement("Ejemplo");
-		root.appendChild(xChild);
-	
-	  //create a comment and put it in the xChild element
-		Comment comment = xmldoc.createComment("Comentario"); 
-		xChild.appendChild(comment);
-	
-	  //create child element, add an attribute, and add to xChild
-		Element child = xmldoc.createElement("child");
-		child.setAttribute("name", "value");
-		xChild.appendChild(child);
-	
-	  //add a text element to the child
-		Text text = xmldoc.createTextNode("Filler, ... I could have had a foo!");
-		child.appendChild(text);
-		
-		
-//	    Element xChild = xmldoc.createElement("code");
-//	    root.appendChild(xChild);
-//	    Text elmnt = xmldoc.createTextNode(projectName);
-//	    xChild.appendChild(elmnt);
-		
-		
-		//   ******** <nodo>Employee:spring</nodo>
-//	    Document doc = builder.newDocument();
-//	    Element rootx = xmldoc.createElement("nodo");
-//	       xmldoc.appendChild(rootx);
-//	    Text elmnt= xmldoc.createTextNode("Employee");
-//	       rootx.appendChild(elmnt);
-//	    Text childElement = xmldoc.createTextNode(":spring");
-//	          root.appendChild(childElement);
+		addChildValue (xDomain,  "name", projectName ); 
 
-		//   ********
+//		Models
+		Element e1 = xmldoc.createElement("models");
+		Element xModels = (Element) xDomain.appendChild(e1);
 		
-		
-		
-		//generate UDFs  
-		generateUDFs(root); 
 
 		//for data model in the project
 		DbEnumeration enu = m_proj.getComponents().elements(DbORDataModel.metaClass);
 		while (enu.hasMoreElements()) {
 			DbORDataModel model = (DbORDataModel)enu.nextElement(); 
-			generateDataModel(root, model, 0);
+			generateDataModel(xModels , model, 0);
 		} 
 		enu.close(); 
 
 		//generate LinkModel 
-		generateLinkModel(root); 
+		generateLinkModel(xDomain); 
 		
 		
 	}
@@ -174,20 +189,28 @@ public class ExportXMLWorker extends Worker {
 		for (DbLinkModelWrapper linkModel : linkModels ) {
 
 			e = xmldoc.createElement( "linkModel");
-			e.setAttribute("name", linkModel.getName().toString());
-			e.setAttribute("source", linkModel.getSource().toString());
-			e.setAttribute("destination", linkModel.getDestination().toString());
-
+//			e.setAttribute("name", linkModel.getName().toString());
+//			e.setAttribute("source", linkModel.getSource().toString());
+//			e.setAttribute("destination", linkModel.getDestination().toString());
 			Element xnLm = (Element) xnLinks.appendChild(e);
 
+			addChildValue( e, "name", linkModel.getName().toString());
+			addChildValue( e, "source", linkModel.getSource().toString());
+			addChildValue( e, "destination", linkModel.getDestination().toString());
+
+			
 			List<DbLinkWrapper> lnks = linkModel.getLinks();
 			for (DbLinkWrapper lnk: lnks) {
 
 				e = xmldoc.createElement( "link");
-				e.setAttribute("name", lnk.getName().toString());
-				e.setAttribute("alias", lnk.getAlias().toString());
-				e.setAttribute("destinationText", lnk.getDestinationText().toString());
+//				e.setAttribute("name", lnk.getName().toString());
+//				e.setAttribute("alias", lnk.getAlias().toString());
+//				e.setAttribute("destinationText", lnk.getDestinationText().toString());
 				Element xnRef = (Element) xnLm.appendChild(e);
+
+				addChildValue( e, "code", lnk.getName().toString());
+				addChildValue( e, "alias", lnk.getAlias().toString());
+				addChildValue( e, "destinationText", lnk.getDestinationText().toString());
 
 				generateColumnsRef( xnRef , lnk.getSourceColumns(), "sourceCol" ); 
 				generateColumnsRef( xnRef , lnk.getDestinationColumns(), "destinationCol" ); 
@@ -209,11 +232,17 @@ public class ExportXMLWorker extends Worker {
 		for (DbUdfWrapper udf : uDfs ) {
 
 			e = xmldoc.createElement( "udf");
-			e.setAttribute("name", udf.getName());
-			e.setAttribute("type", udf.getType());
-			e.setAttribute("alias", udf.getAlias());
-			e.setAttribute("description", udf.getDescription());
+//			e.setAttribute("name", udf.getName());
+//			e.setAttribute("type", udf.getType());
+//			e.setAttribute("alias", udf.getAlias());
+//			e.setAttribute("description", udf.getDescription());
 			xnUdfs.appendChild(e);
+
+			addChildValue( e, "code", udf.getName());
+			addChildValue( e, "type", udf.getType());
+			addChildValue( e, "alias", udf.getAlias());
+			addChildValue( e, "description", udf.getDescription());
+		
 		}
 	}
 
@@ -221,12 +250,15 @@ public class ExportXMLWorker extends Worker {
 
 		// pattern = "<datamodel name=\"{0}\" idmodel=\"{1}\" idref=\"{2}\">"; 
 		idModel = idModel+1; 
-		Element e = xmldoc.createElement("datamodel");
-		e.setAttribute("name", model.getName());
+		Element e = xmldoc.createElement("model");
+//		e.setAttribute("name", model.getName());
 		e.setAttribute("idmodel", idModel.toString() );
 		e.setAttribute("idref", idRef.toString() );
 		Element xnDm = (Element) root.appendChild(e);
 		idRef = idModel; 
+
+//		
+		addChildValue( e, "code", model.getName());
 
 		// Generate Tables 
 		generateTables(xnDm, model);
@@ -247,7 +279,7 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateAssociations(Element root, DbORDataModel model) throws DbException {
 
-		Element e = xmldoc.createElement("relations");
+		Element e = xmldoc.createElement("neighbors");
 		Node xnRels = root.appendChild(e);
 		
 		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model); 
@@ -255,14 +287,17 @@ public class ExportXMLWorker extends Worker {
 
 		for (DbORAssociationWrapper wRef : associations ) {
 
-			e = xmldoc.createElement( "relation");
-			e.setAttribute("LogicalName", wRef.getName().toString());
-			e.setAttribute("name", wRef.getPairName());
-
+			e = xmldoc.createElement( "neighbor");
+//			e.setAttribute("LogicalName", wRef.getName().toString());
+//			e.setAttribute("name", wRef.getPairName());
 			Element xnRel = (Element) xnRels.appendChild(e);
 
-			generateAssociationsEnd(xnRel, wRef.getBase(), "r0"); 
-			generateAssociationsEnd(xnRel, wRef.getRefe(), "r1"); 
+			addChildValue( e, "LogicalName", wRef.getName().toString());
+			addChildValue( e, "name", wRef.getPairName());
+
+//  Para debuguer 			
+//			generateAssociationsEnd(xnRel, wRef.getBase(), "r0"); 
+//			generateAssociationsEnd(xnRel, wRef.getRefe(), "r1"); 
 
 		}
 		
@@ -272,11 +307,16 @@ public class ExportXMLWorker extends Worker {
 	private void generateAssociationsEnd(Element xnRel, DbORAssociationEndWrapper wEnd, String nName) throws DOMException, DbException {
 
 		Element e = xmldoc.createElement(nName);
-		e.setAttribute("name", wEnd.getTableName());
-		e.setAttribute("multiplicity", wEnd.getMultiplicity() );
-		e.setAttribute("cardianlity", wEnd.getCardinality() );
+//		e.setAttribute("name", wEnd.getTableName());
+//		e.setAttribute("multiplicity", wEnd.getMultiplicity() );
+//		e.setAttribute("cardianlity", wEnd.getCardinality() );
 		Element xnRef = (Element) xnRel.appendChild(e);
+		
+		addChildValue( e, "code", wEnd.getTableName());
+		addChildValue( e, "multiplicity", wEnd.getMultiplicity() );
+		addChildValue( e, "cardianlity", wEnd.getCardinality() );
 
+		
 		generateColumnsRef( xnRef , wEnd.getColumns(), "refCol" ); 
 
 		
@@ -296,7 +336,7 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateTables(Element xnDm, DbORDataModel model) throws DbException  { 
 
-		Element e = xmldoc.createElement("tables");
+		Element e = xmldoc.createElement("concepts");
 		Element xnTables = (Element) xnDm.appendChild(e);
 		
 		//for each table in the data model
@@ -317,18 +357,27 @@ public class ExportXMLWorker extends Worker {
 		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model); 
 		DbTableWrapper wTable = new DbTableWrapper( wModel, table); 
 
-		Element e = xmldoc.createElement("table");
-		e.setAttribute("name", wTable.getName().toString());
-		e.setAttribute("alias", wTable.getAlias().toString() );
-		e.setAttribute("physicalName", wTable.getPhysicalName().toString() );
-		e.setAttribute("superTable", wTable.getSuperTableName().toString() );
+		Element e = xmldoc.createElement("concept");
+//		e.setAttribute("name", wTable.getName().toString());
+//		e.setAttribute("alias", wTable.getAlias().toString() );
+//		e.setAttribute("physicalName", wTable.getPhysicalName().toString() );
+//		e.setAttribute("superTable", wTable.getSuperTableName().toString() );
 		Element xnTb = (Element) root.appendChild(e);
+
+		addChildValue( e, "code", wTable.getName().toString());
+		addChildValue( e, "alias", wTable.getAlias().toString() );
+		addChildValue( e, "physicalName", wTable.getPhysicalName().toString() );
+		addChildValue( e, "superTable", wTable.getSuperTableName().toString() );
+
+		
+		Element e1 = xmldoc.createElement("properties");
+		Element xnCols = (Element) xnTb.appendChild(e1);
 		
 		//for each column in the table
 		DbEnumeration enu = table.getComponents().elements(DbORColumn.metaClass);
 		while (enu.hasMoreElements()) {
 			DbORColumn col = (DbORColumn)enu.nextElement(); 
-			generateColumn(xnTb, wTable , col);
+			generateColumn(xnCols, wTable , col);
 		} 
 		enu.close(); 
 
@@ -342,21 +391,33 @@ public class ExportXMLWorker extends Worker {
 		DbColumnWrapper wCol = new DbColumnWrapper(wTable, col); 
 
 		//pattern = "<column name=\"{0}\" alias=\"{1}\" physicalName=\"{2}\" superColumn=\"{3}\" >";
-		Element e = xmldoc.createElement("column");
-		e.setAttribute("name", wCol.getName().toString());
-		e.setAttribute("alias", wCol.getAlias().toString() );
-		e.setAttribute("physicalName", wCol.getPhysicalName().toString() );
-		e.setAttribute("superColumn", wCol.getSuperColName(m_wProj).toString() );
-		e.setAttribute("type", wCol.getTypeDesc());
-		e.setAttribute("nullable", wCol.getNullAllowed());
-		
-		s = (wTable.isPrimary(col))? "True" : "False"; e.setAttribute("primary", s);
- 		s = (wCol.isForeign())? "True" : "False"; e.setAttribute("foreign", s);
+		Element e = xmldoc.createElement("property");
+//		e.setAttribute("name", wCol.getName().toString());
+//		e.setAttribute("alias", wCol.getAlias().toString() );
+//		e.setAttribute("physicalName", wCol.getPhysicalName().toString() );
+//		e.setAttribute("superColumn", wCol.getSuperColName(m_wProj).toString() );
+//		e.setAttribute("type", wCol.getTypeDesc());
+//		e.setAttribute("nullable", wCol.getNullAllowed());
+//		
+//		s = (wTable.isPrimary(col))? "True" : "False"; e.setAttribute("primary", s);
+// 		s = (wCol.isForeign())? "True" : "False"; e.setAttribute("foreign", s);
 		
 		Element xnCl = (Element) root.appendChild(e);
 
-		// Udfs
-		generateColUdfs(xnCl, wCol); 
+		addChildValue( e, "code", wCol.getName().toString());
+		addChildValue( e, "alias", wCol.getAlias().toString() );
+		addChildValue( e, "physicalName", wCol.getPhysicalName().toString() );
+		addChildValue( e, "superColumn", wCol.getSuperColName(m_wProj).toString() );
+		addChildValue( e, "type", wCol.getTypeDesc());
+		addChildValue( e, "nullable", wCol.getNullAllowed());
+		
+		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "primary", s);
+ 		s = (wCol.isForeign())? "True" : "False"; addChildValue( e, "foreign", s);
+
+		
+		
+		// Udfs   OJO
+//		generateColUdfs(xnCl, wCol); 
 
 }
 
@@ -368,15 +429,20 @@ public class ExportXMLWorker extends Worker {
 		
 		//	pattern = "<udf name=\"{0}\" value=\"{1}\"/>";
 		e = xmldoc.createElement("udf");
-		e.setAttribute("description", wCol.getDescription());
+//		e.setAttribute("description", wCol.getDescription());
 		xnUdfs.appendChild(e);
+
+		addChildValue( e, "description", wCol.getDescription());
 
 		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		for (DbUdfWrapper udf : uDfs ) {
 
 			e = xmldoc.createElement( "udf");
-			e.setAttribute(udf.getAlias(), wCol.getUdfValue(udf.getName()));
+//			e.setAttribute(udf.getAlias(), wCol.getUdfValue(udf.getName()));
 			xnUdfs.appendChild(e);
+			
+			addChildValue( e, udf.getAlias(), wCol.getUdfValue(udf.getName()));
+
 		}
 
 	}
