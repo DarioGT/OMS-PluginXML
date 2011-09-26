@@ -30,6 +30,7 @@ import org.certae.plugins.export.mrd.wrappers.DbORAssociationWrapper;
 import org.certae.plugins.export.mrd.wrappers.DbProjectWrapper;
 import org.certae.plugins.export.mrd.wrappers.DbTableWrapper;
 import org.certae.plugins.export.mrd.wrappers.DbUdfWrapper;
+import org.certae.plugins.export.mrd.wrappers.StringWrapper;
 import org.modelsphere.jack.baseDb.db.Db;
 import org.modelsphere.jack.baseDb.db.DbEnumeration;
 import org.modelsphere.jack.baseDb.db.DbException;
@@ -157,7 +158,7 @@ public class ExportXMLWorker extends Worker {
 		Element xDomain = (Element) root.appendChild(e);
 		
 //		root.setAttribute( "name", projectName);
-		addChildValue (xDomain,  "name", projectName ); 
+		addChildValue (xDomain,  "code", projectName ); 
 
 //		Models
 		Element e1 = xmldoc.createElement("models");
@@ -295,7 +296,7 @@ public class ExportXMLWorker extends Worker {
 			addChildValue( e, "LogicalName", wRef.getName().toString());
 			addChildValue( e, "name", wRef.getPairName());
 
-//  Para debuguer 			
+//  		
 			generateAssociationsEnd(xnRel, wRef.getBase(), "r0"); 
 			generateAssociationsEnd(xnRel, wRef.getRefe(), "r1"); 
 
@@ -307,9 +308,6 @@ public class ExportXMLWorker extends Worker {
 	private void generateAssociationsEnd(Element xnRel, DbORAssociationEndWrapper wEnd, String nName) throws DOMException, DbException {
 
 		Element e = xmldoc.createElement(nName);
-//		e.setAttribute("name", wEnd.getTableName());
-//		e.setAttribute("multiplicity", wEnd.getMultiplicity() );
-//		e.setAttribute("cardianlity", wEnd.getCardinality() );
 		Element xnRef = (Element) xnRel.appendChild(e);
 		
 		addChildValue( e, "code", wEnd.getTableName());
@@ -358,10 +356,6 @@ public class ExportXMLWorker extends Worker {
 		DbTableWrapper wTable = new DbTableWrapper( wModel, table); 
 
 		Element e = xmldoc.createElement("concept");
-//		e.setAttribute("name", wTable.getName().toString());
-//		e.setAttribute("alias", wTable.getAlias().toString() );
-//		e.setAttribute("physicalName", wTable.getPhysicalName().toString() );
-//		e.setAttribute("superTable", wTable.getSuperTableName().toString() );
 		Element xnTb = (Element) root.appendChild(e);
 
 		addChildValue( e, "code", wTable.getName().toString());
@@ -381,10 +375,55 @@ public class ExportXMLWorker extends Worker {
 		} 
 		enu.close(); 
 
-//		generateRelations(xnTb, wTable ); 
-		
+	    // Neighbors
+		generateNeighbors ( xnTb , model, wTable ); 
 	}
 
+	private void generateNeighbors(Element root, DbORDataModel model,DbTableWrapper wTable) throws DbException {
+
+		Element e = xmldoc.createElement("neighbors");
+		Node xnRels = root.appendChild(e);
+		
+		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model); 
+		List<DbORAssociationWrapper> associations = wModel.getAssociations();
+
+		for (DbORAssociationWrapper wRef : associations ) {
+
+			String sRefe = wRef.getRefe().getTableName();
+			if (sRefe == wTable.getName().toString())  {
+
+				StringWrapper sBase = wRef.getBase().getName();
+
+				e = xmldoc.createElement( "neighbor");
+				Element xnRel = (Element) xnRels.appendChild(e);
+	
+				String sAux = wRef.getName().toString();
+				if ( sAux.length() == 0 ) {
+					sAux = wRef.getPhysicalName().getCapitalized().toString();
+				}
+
+				addChildValue( e, "code", sAux);
+				addChildValue( e, "pairName", wRef.getPairName().toString() );
+
+				addChildValue( e, "baseConcept", sBase.getCamelCase().toString());
+				addChildValue( e, "destinationConcept", wTable.getName().getCamelCase().toString());
+				
+				//TODO:  Multiplicity
+				DbORAssociationEndWrapper wNgBase = wRef.getBase(); 
+				DbORAssociationEndWrapper wNgRef = wRef.getRefe(); 
+				
+				addChildValue( e, "multiplicity", wNgBase.getMin() );
+				addChildValue( e, "cardianlity", wNgBase.getMax() );
+
+				addChildValue( e, "multiplicity", wNgRef.getMin() );
+				addChildValue( e, "cardianlity", wNgRef.getMax() );
+			
+			}
+		}
+
+	}
+	
+	
 	private void generateColumn(Element root, DbTableWrapper wTable, DbORColumn col) throws DbException {
 
 		String s; 

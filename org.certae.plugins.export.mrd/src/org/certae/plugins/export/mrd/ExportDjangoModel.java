@@ -234,7 +234,7 @@ private void iniFileAdmin(String projectName) throws DbException, IOException {
 			params = (params == "OPTIONAL")? ", blank=True, null=True": ""; 
 		    pattern = "{0} = models.ForeignKey(''{1}''{2})"; 
 
-			// La relation est dupliqué 
+			// La relation est dupliquï¿½ 
 			if ( sRels.contains("'" + sRel  + "'")) {
 				sRel = sRel + "1";  
 				params = params + ", related_name='+'";
@@ -252,6 +252,8 @@ private void iniFileAdmin(String projectName) throws DbException, IOException {
     iw.println("def __unicode__(self):");
     iw.indent();
 
+    
+    // Unique Keys 
 	String keys = ""; 
 	msg = "";
     pattern  = "force_unicode(self.{0})";
@@ -263,6 +265,7 @@ private void iniFileAdmin(String projectName) throws DbException, IOException {
 
       if (wTable.isPrimary(col) ){
 	      if (wCol.isForeign()) {
+	    	  // La columna de referencia corresponde al nombre de la tabla 
 		      msg = MessageFormat.format(pattern, wCol.getRefTable());
 		      if (keys.contains(msg)) msg = "";  
 	      }
