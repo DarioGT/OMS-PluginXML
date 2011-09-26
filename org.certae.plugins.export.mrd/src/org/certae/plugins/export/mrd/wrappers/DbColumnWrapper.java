@@ -103,9 +103,12 @@ public class DbColumnWrapper {
 		try {
 			description = m_dbCol.getDescription();
 		} catch (DbException ex) {
-			description = null;
+			description = "";
 		}
 
+		if ( description == null ) { 
+			description = ""; 
+		}
 		return description;
 	}
 
@@ -157,7 +160,7 @@ public class DbColumnWrapper {
 
 	public String getType() throws DbException {
 		DbORTypeClassifier type = m_dbCol.getType();
-		String s = (type == null)? "?" : type.getName();
+		String s = (type == null)? "" : type.getName();
 		return s;
 	}
 
@@ -209,18 +212,23 @@ public class DbColumnWrapper {
 		return (i == null) ? 0 : i;
 	}
 
+	public Integer getDecLength() throws DbException {
+		Integer i = m_dbCol.getNbDecimal();
+		return (i == null) ? 0 : i;
+	}
+
 	public String getTypeDesc() throws DbException {
 
-		String lengthNbDecimal= getType();
+		String sType= getType();
 
 		Integer length = getLength();
 		if ((length != null ) && (length != 0)) {
-			lengthNbDecimal += "(" + length.toString(); 
+			sType += "(" + length.toString(); 
 			Integer nbDecimal = m_dbCol.getNbDecimal();
-			if (nbDecimal == null) lengthNbDecimal += ")"; 
-			else  lengthNbDecimal += "," + nbDecimal.toString() + ")"; 
+			if (nbDecimal == null) sType += ")"; 
+			else  sType += "," + nbDecimal.toString() + ")"; 
 		}
-		return lengthNbDecimal;
+		return sType;
 	}
 
 
