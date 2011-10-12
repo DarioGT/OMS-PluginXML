@@ -58,6 +58,10 @@ public class ExportXMLWorker extends Worker {
 	private DbProjectWrapper m_wProj ;  
 	private Document xmldoc;
 
+	// Script all properties 
+	private Boolean scriptAll = false; 
+
+	
 	public ExportXMLWorker() {
 		idModel = 0; 
 	}
@@ -85,7 +89,7 @@ public class ExportXMLWorker extends Worker {
 		PluginServices.multiDbCommitTrans();
 
 		// Serialize
-		writeXmlFile(xmldoc, defaultFolderName + "/" + projectName + ".xml" ); 
+		writeXmlFile(xmldoc, defaultFolderName + "/" + projectName + ".exp" ); 
 
 		// if success
 		Controller controller = this.getController();
@@ -101,7 +105,7 @@ public class ExportXMLWorker extends Worker {
 	private void addChildValue( Element nRoot , String nName , String nValue , String vDefault )
 	{ 
 		
-		if  (!( nValue.equals(vDefault) )) {
+		if  (!( nValue.equals(vDefault) ) || scriptAll ) {
 			addChildValue( nRoot , nName , nValue  );
 		}
 		
@@ -110,8 +114,6 @@ public class ExportXMLWorker extends Worker {
 	private void addChildValue( Element nRoot , String nName , String nValue  ) 
 	{
 
-		// Script all properties 
-		Boolean scriptAll = false; 
 		
 		if (( nValue.length() > 0 ) || scriptAll )  { 
 
@@ -153,7 +155,7 @@ public class ExportXMLWorker extends Worker {
 	
 	private void addChildAttr( Element nRoot , String nName , String nValue  ) 
 	{
-		if ( nValue.trim().length() > 0 ) { 
+		if (( nValue.trim().length() > 0 ) || scriptAll )  { 
 			nRoot.setAttribute(nName, nValue);
 		}
 	}		
@@ -417,12 +419,12 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateForeigns(Element root, DbORDataModel model,DbTableWrapper wTable) throws DbException {
 
-		Element e = xmldoc.createElement("foreigns");
-		Node xnRels = root.appendChild(e);
-		
 		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model); 
 		List<DbORAssociationWrapper> associations = wModel.getAssociations();
+		if (associations.isEmpty()) return ; 
 
+		Element e = xmldoc.createElement("foreigns");
+		Node xnRels = root.appendChild(e);
 		
 		for (DbORAssociationWrapper wRef : associations ) {
 
