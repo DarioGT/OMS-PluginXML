@@ -1,1307 +1,316 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <domains>
-  <origin>OpenModelSphere 3.2x</origin>
-  <udps />
+  <origin>OpenModelSphere 3.2</origin>
   <domain>
-    <code>modelibra</code>
+    <code>Modelibra</code>
     <models>
       <model idmodel="1" idref="0">
         <code>Relational Data Model</code>
         <concepts>
           <concept>
             <code>Domain</code>
-            <alias />
-            <physicalName />
-            <superTable />
+            <description text="Descripcion larga é con caracteres unicode ô à " />
             <properties>
               <property>
-                <code>code</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>domaiType</code>
+                <description text="Otra descripcion é{à " />
               </property>
               <property>
-                <code>type</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>packageCode</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>abtraction</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>defaultContrunct</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>packagePrefix</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>referenceModel</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>i18n</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>signin</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>signinConcept</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>shortTextDefaultLength</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>pageBlockDefaultSize</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>validateForm</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>confirmRemove</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>origin</code>
               </property>
             </properties>
-            <neighbors />
+            <foreigns>
+              <foreign baseConcept="Domain" baseMax="N" baseMin="0" code="Domain-Domain" refConcept="Domain" refMax="1" refMin="1" />
+              <foreign baseConcept="MetaObj" code="MetaObj-Domain" refConcept="Domain" />
+            </foreigns>
           </concept>
           <concept>
-            <code>DomainModel</code>
-            <alias />
-            <physicalName />
-            <superTable />
+            <code>Model</code>
             <properties>
               <property>
-                <code>code</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>modelType</code>
               </property>
               <property>
-                <code>abstraction</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extension</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code> extensionDomain</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionDomainType</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionModel</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>author</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>packageCode</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>persistent</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>presistenceType</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>presistenceRelativePath</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>persistenceConfig</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>defaultLoadSave</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>datePattern</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>session</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>modelPrefix</code>
               </property>
             </properties>
-            <neighbors>
-              <neighbor>
-                <code />
-                <pairName>Domain-DomainModel</pairName>
-                <baseConcept>Domain</baseConcept>
-                <destinationConcept>DomainModel</destinationConcept>
-                <baseMin>0</baseMin>
-                <baseMax>N</baseMax>
-                <refMin>1</refMin>
-                <refMax>1</refMax>
-              </neighbor>
-            </neighbors>
+            <foreigns>
+              <foreign baseConcept="Domain" baseMax="N" baseMin="0" code="Domain-Model" refConcept="Model" refMax="1" refMin="1" />
+              <foreign baseConcept="Domain" baseMax="N" baseMin="0" code="Domain-Model" refConcept="Model" refMax="1" refMin="1" />
+              <foreign baseConcept="Model" baseMax="N" baseMin="0" code="extModel" pairName="Model-Model" refConcept="Model" refMax="1" refMin="1" />
+              <foreign baseConcept="MetaObj" code="MetaObj-Model" refConcept="Model" />
+            </foreigns>
           </concept>
           <concept>
             <code>Concept</code>
-            <alias />
-            <physicalName />
-            <superTable />
             <properties>
               <property>
-                <code>code</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>abstraction</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extension</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionDomain</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionDomainType</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionModel</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionConcept</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>extensionWithNeighbors</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>entitiesCode</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>packageCode</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>min</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>max</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>entry</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>fileName</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>index</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>display</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>displayType</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>add</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>remove</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>update</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>conceptType</code>
               </property>
             </properties>
-            <neighbors>
-              <neighbor>
-                <code />
-                <pairName>DomainModel-Concept</pairName>
-                <baseConcept>DomainModel</baseConcept>
-                <destinationConcept>Concept</destinationConcept>
-                <baseMin>0</baseMin>
-                <baseMax>N</baseMax>
-                <refMin>1</refMin>
-                <refMax>1</refMax>
-              </neighbor>
-            </neighbors>
+            <foreigns>
+              <foreign baseConcept="Model" baseMax="N" baseMin="0" code="Model-Concept" refConcept="Concept" refMax="1" refMin="1" />
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="extConcept" pairName="Concept-Concept" refConcept="Concept" refMax="1" refMin="1" />
+              <foreign baseConcept="MetaObj" code="MetaObj-Concept" refConcept="Concept" />
+            </foreigns>
           </concept>
           <concept>
-            <code>Neighbor</code>
-            <alias />
-            <physicalName />
-            <superTable />
+            <code>Relationship</code>
             <properties>
               <property>
-                <code>code</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>relationType</code>
               </property>
               <property>
-                <code>extension</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>baseMin</code>
               </property>
               <property>
-                <code>extensionNeighbor</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>baseMax</code>
               </property>
               <property>
-                <code>destinationConcept</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>refMin</code>
               </property>
               <property>
-                <code>inverseNeighbor</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>internal</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>partOfM2M</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>type</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>min</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>max</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>unique</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>index</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>addRule</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>removeRule</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>UpdateRule</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>display</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>update</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>absorb</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>refMax</code>
               </property>
             </properties>
-            <neighbors>
-              <neighbor>
-                <code />
-                <pairName>Concept-Neighbor</pairName>
-                <baseConcept>Concept</baseConcept>
-                <destinationConcept>Neighbor</destinationConcept>
-                <baseMin>0</baseMin>
-                <baseMax>N</baseMax>
-                <refMin>1</refMin>
-                <refMax>1</refMax>
-              </neighbor>
-            </neighbors>
+            <foreigns>
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="Concept-Relationship" refConcept="Relationship" refMax="1" refMin="1" />
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="Concept-Relationship" refConcept="Relationship" refMax="1" refMin="1" />
+            </foreigns>
           </concept>
           <concept>
             <code>Property</code>
-            <alias />
-            <physicalName />
-            <superTable />
             <properties>
               <property>
-                <code>code</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>propertyType</code>
               </property>
               <property>
-                <code>extension</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>classType</code>
               </property>
               <property>
-                <code>extensionProperty</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>length</code>
               </property>
               <property>
-                <code>propertyClass</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>decLength</code>
               </property>
               <property>
-                <code>derived</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>validateType</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>maxLength</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>nullable</code>
               </property>
               <property>
                 <code>required</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>sensitive</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
               </property>
               <property>
                 <code>defaultValue</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
               </property>
               <property>
-                <code>autoincrement</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>unique</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>index</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>reference</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>referenceNeighbor</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>display</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>update</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
-              </property>
-              <property>
-                <code>displayLength</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>sensitive</code>
               </property>
               <property>
                 <code>essential</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
               </property>
               <property>
-                <code>scramble</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>unique</code>
               </property>
               <property>
-                <code>whiteSpaceAllowed</code>
-                <alias />
-                <physicalName />
-                <superColumn />
-                <type>?</type>
-                <nullable>True</nullable>
-                <primary>False</primary>
-                <foreign>False</foreign>
-                <udps>
-                  <description text="" />
-                </udps>
+                <code>propertyIndex</code>
+              </property>
+              <property>
+                <code>foreign</code>
+              </property>
+              <property>
+                <code>foreignConcept</code>
+              </property>
+              <property>
+                <code>foreignProperty</code>
+              </property>
+              <property>
+                <code>validationRule</code>
+              </property>
+              <property>
+                <code>derivationType</code>
+              </property>
+              <property>
+                <code>derivationRule</code>
+              </property>
+              <property>
+                <code>derivationConcept</code>
+              </property>
+              <property>
+                <code>derivationProperty</code>
               </property>
             </properties>
-            <neighbors>
-              <neighbor>
-                <code />
-                <pairName>Concept-Property</pairName>
-                <baseConcept>Concept</baseConcept>
-                <destinationConcept>Property</destinationConcept>
-                <baseMin>0</baseMin>
-                <baseMax>N</baseMax>
-                <refMin>1</refMin>
-                <refMax>1</refMax>
-              </neighbor>
-            </neighbors>
+            <foreigns>
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="Concept-Property" refConcept="Property" refMax="1" refMin="1" />
+              <foreign baseConcept="Relationship" code="Relationship-Property" refConcept="Property" refMax="1" refMin="1" />
+              <foreign baseConcept="Relationship" code="Relationship-Property" refConcept="Property" />
+              <foreign baseConcept="Property" baseMax="N" baseMin="0" code="extProperty" pairName="Property-Property" refConcept="Property" refMax="1" refMin="1" />
+              <foreign baseConcept="MetaObj" code="MetaObj-Property" refConcept="Property" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>Table</code>
+            <properties />
+            <foreigns />
+          </concept>
+          <concept>
+            <code>MetaObj</code>
+            <properties>
+              <property>
+                <code>code</code>
+              </property>
+              <property>
+                <code>objType</code>
+              </property>
+              <property>
+                <code>description</code>
+              </property>
+              <property>
+                <code>extensionType</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="MetaObj" baseMax="N" baseMin="0" code="extObj" pairName="MetaObj-MetaObj" refConcept="MetaObj" refMax="1" refMin="1" />
+              <foreign baseConcept="UserDefinedProperty" baseMax="N" baseMin="0" code="UserDefinedProperty-MetaObj" refConcept="MetaObj" refMax="1" refMin="1" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>Table</code>
+            <properties />
+            <foreigns />
+          </concept>
+          <concept>
+            <code>UserDefinedProperty</code>
+            <properties>
+              <property>
+                <code>udpCode</code>
+              </property>
+              <property>
+                <code>udpTarget</code>
+              </property>
+              <property>
+                <code>udpType</code>
+              </property>
+              <property>
+                <code>udpValue</code>
+              </property>
+              <property>
+                <code>udpRule</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="MetaObj" baseMax="N" baseMin="0" code="MetaObj-UserDefinedProperty" refConcept="UserDefinedProperty" refMax="1" refMin="1" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>MetaLink</code>
+            <properties>
+              <property>
+                <code>synonymType</code>
+              </property>
+              <property>
+                <code>synonymDescription</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="MetaObj" baseMax="N" baseMin="0" code="MetaObj-MetaLink" refConcept="MetaLink" refMax="1" refMin="1" />
+              <foreign baseConcept="MetaObj" baseMax="N" baseMin="0" code="MetaObj-MetaLink" refConcept="MetaLink" refMax="1" refMin="1" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>NavigationLink</code>
+            <properties>
+              <property>
+                <code>navigationType</code>
+              </property>
+              <property>
+                <code>navigationRule</code>
+              </property>
+              <property>
+                <code>caption</code>
+              </property>
+              <property>
+                <code>toolTip</code>
+              </property>
+              <property>
+                <code>tag</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="Concept-NavigationLink" refConcept="NavigationLink" refMax="1" refMin="1" />
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="Concept-NavigationLink" refConcept="NavigationLink" refMax="1" refMin="1" />
+              <foreign baseConcept="Concept" baseMax="N" baseMin="0" code="Concept-NavigationLink" refConcept="NavigationLink" refMax="1" refMin="1" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>EntryPoints</code>
+            <properties>
+              <property>
+                <code>caption</code>
+              </property>
+              <property>
+                <code>titre</code>
+              </property>
+              <property>
+                <code>typeEntryPoint</code>
+              </property>
+              <property>
+                <code>rule</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="Concept" baseMax="1" baseMin="0" code="Concept-EntryPoints" refConcept="EntryPoints" refMax="1" refMin="0" />
+              <foreign baseConcept="MetaObj" code="MetaObj-EntryPoints" refConcept="EntryPoints" />
+              <foreign baseConcept="Domain" baseMax="N" baseMin="0" code="Domain-EntryPoints" refConcept="EntryPoints" refMax="1" refMin="1" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>Menu</code>
+            <properties>
+              <property>
+                <code>menuCode</code>
+              </property>
+              <property>
+                <code>menuBase</code>
+              </property>
+              <property>
+                <code>menuIndex</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="EntryPoints" baseMax="N" baseMin="0" code="EntryPoints-Menu" refConcept="Menu" refMax="1" refMin="1" />
+              <foreign baseConcept="MetaObj" code="MetaObj-Menu" refConcept="Menu" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>ModelGraphic</code>
+            <properties>
+              <property>
+                <code>modelName</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="Model" baseMax="N" baseMin="0" code="Model-ModelGraphic" refConcept="ModelGraphic" refMax="1" refMin="1" />
+            </foreigns>
+          </concept>
+          <concept>
+            <code>Traduction</code>
+            <properties>
+              <property>
+                <code>languageCode</code>
+              </property>
+              <property>
+                <code>caption</code>
+              </property>
+              <property>
+                <code>description</code>
+              </property>
+            </properties>
+            <foreigns>
+              <foreign baseConcept="MetaObj" baseMax="N" baseMin="0" code="MetaObj-Traduction" refConcept="Traduction" refMax="1" refMin="1" />
+            </foreigns>
           </concept>
         </concepts>
-        <neighbors>
-          <neighbor>
-            <LogicalName />
-            <name>Domain-DomainModel</name>
-            <r0>
-              <code>Domain</code>
-              <multiplicity>MANY</multiplicity>
-              <cardianlity>0..N</cardianlity>
-            </r0>
-            <r1>
-              <code>DomainModel</code>
-              <multiplicity>EXACTLY_ONE</multiplicity>
-              <cardianlity>1..1</cardianlity>
-            </r1>
-          </neighbor>
-          <neighbor>
-            <LogicalName />
-            <name>DomainModel-Concept</name>
-            <r0>
-              <code>DomainModel</code>
-              <multiplicity>MANY</multiplicity>
-              <cardianlity>0..N</cardianlity>
-            </r0>
-            <r1>
-              <code>Concept</code>
-              <multiplicity>EXACTLY_ONE</multiplicity>
-              <cardianlity>1..1</cardianlity>
-            </r1>
-          </neighbor>
-          <neighbor>
-            <LogicalName />
-            <name>Concept-Neighbor</name>
-            <r0>
-              <code>Concept</code>
-              <multiplicity>MANY</multiplicity>
-              <cardianlity>0..N</cardianlity>
-            </r0>
-            <r1>
-              <code>Neighbor</code>
-              <multiplicity>EXACTLY_ONE</multiplicity>
-              <cardianlity>1..1</cardianlity>
-            </r1>
-          </neighbor>
-          <neighbor>
-            <LogicalName />
-            <name>Concept-Property</name>
-            <r0>
-              <code>Concept</code>
-              <multiplicity>MANY</multiplicity>
-              <cardianlity>0..N</cardianlity>
-            </r0>
-            <r1>
-              <code>Property</code>
-              <multiplicity>EXACTLY_ONE</multiplicity>
-              <cardianlity>1..1</cardianlity>
-            </r1>
-          </neighbor>
-        </neighbors>
       </model>
     </models>
-    <linkModels />
   </domain>
 </domains>
