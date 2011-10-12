@@ -98,17 +98,29 @@ public class ExportXMLWorker extends Worker {
 	} //end runJob()
 
 	
+	private void addChildValue( Element nRoot , String nName , String nValue , String vDefault )
+	{ 
+		
+		if  (!( nValue.equals(vDefault) )) {
+			addChildValue( nRoot , nName , nValue  );
+		}
+		
+	}
+
 	private void addChildValue( Element nRoot , String nName , String nValue  ) 
 	{
 
-//		if ( nValue.length() > 0 ) { 
+		// Script all properties 
+		Boolean scriptAll = false; 
+		
+		if (( nValue.length() > 0 ) || scriptAll )  { 
 
 			Element xChild = xmldoc.createElement(nName);
 		    nRoot.appendChild(xChild);
 		    Text elmnt = xmldoc.createTextNode(nValue);
 		    xChild.appendChild(elmnt);
 
-//		}
+		}
 		
 //		  //create a comment and put it in the xChild element
 //			Element xChild = xmldoc.createElement("Ejemplo");
@@ -138,6 +150,14 @@ public class ExportXMLWorker extends Worker {
 		
 	}
 	
+	
+	private void addChildAttr( Element nRoot , String nName , String nValue  ) 
+	{
+		if ( nValue.trim().length() > 0 ) { 
+			nRoot.setAttribute(nName, nValue);
+		}
+	}		
+
 	
 	private void generateProject(String projectName) 
 	throws Exception {
@@ -185,10 +205,12 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateLinkModel(Element root) throws DOMException, DbException {
 
+		List<DbLinkModelWrapper> linkModels = m_wProj.getLinkModels();
+		if (linkModels.isEmpty()) return ; 
+		
 		Element e = xmldoc.createElement("linkModels");
 		Node xnLinks = root.appendChild(e);
 
-		List<DbLinkModelWrapper> linkModels = m_wProj.getLinkModels();
 		for (DbLinkModelWrapper linkModel : linkModels ) {
 
 			e = xmldoc.createElement( "linkModel");
@@ -227,11 +249,13 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateUDFs(Element root) throws DbException {
 
+		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
+		if (uDfs.isEmpty()) return ; 
+		
 		Element e = xmldoc.createElement("udps");
 		Node xnUdfs = root.appendChild(e);
 
 		//	pattern = "<udf name=\"{0}\" type=\"{1}\" alias=\"{2}\" description=\"{3}\" />";
-		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		for (DbUdfWrapper udf : uDfs ) {
 
 			e = xmldoc.createElement( "udp");
@@ -267,7 +291,7 @@ public class ExportXMLWorker extends Worker {
 		generateTables(xnDm, model);
 
 		//generate Associations   
-		generateAssociations(xnDm, model); 
+		//generateAssociations(xnDm, model); 
 		
 		//for dataModels in the model 
 		DbEnumeration enu2 = model.getComponents().elements(DbORDataModel.metaClass);
@@ -282,7 +306,7 @@ public class ExportXMLWorker extends Worker {
 
 	private void generateAssociations(Element root, DbORDataModel model) throws DbException {
 
-		Element e = xmldoc.createElement("neighbors");
+		Element e = xmldoc.createElement("relationships");
 		Node xnRels = root.appendChild(e);
 		
 		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model); 
@@ -290,7 +314,7 @@ public class ExportXMLWorker extends Worker {
 
 		for (DbORAssociationWrapper wRef : associations ) {
 
-			e = xmldoc.createElement( "neighbor");
+			e = xmldoc.createElement( "relationship");
 			Element xnRel = (Element) xnRels.appendChild(e);
 
 			String sAux = wRef.getName().toString();
@@ -368,6 +392,13 @@ public class ExportXMLWorker extends Worker {
 		addChildValue( e, "physicalName", wTable.getPhysicalName().toString() );
 		addChildValue( e, "superTable", wTable.getSuperTableName().toString() );
 
+		String sDesc = wTable.getDescription(); 
+		if (sDesc.length() > 0) { 
+			Element xDesc = xmldoc.createElement("description");
+			xDesc .setAttribute("text", sDesc );
+			e.appendChild(xDesc );
+		}
+
 		
 		Element e1 = xmldoc.createElement("properties");
 		Element xnCols = (Element) xnTb.appendChild(e1);
@@ -380,11 +411,11 @@ public class ExportXMLWorker extends Worker {
 		} 
 		enu.close(); 
 
-	    // Neighbors
-		generateNeighbors ( xnTb , model, wTable ); 
+	    // 
+		generateForeigns( xnTb , model, wTable ); 
 	}
 
-	private void generateNeighbors(Element root, DbORDataModel model,DbTableWrapper wTable) throws DbException {
+	private void generateForeigns(Element root, DbORDataModel model,DbTableWrapper wTable) throws DbException {
 
 		Element e = xmldoc.createElement("foreigns");
 		Node xnRels = root.appendChild(e);
@@ -392,6 +423,7 @@ public class ExportXMLWorker extends Worker {
 		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model); 
 		List<DbORAssociationWrapper> associations = wModel.getAssociations();
 
+		
 		for (DbORAssociationWrapper wRef : associations ) {
 
 			String sRefe = wRef.getRefe().getTableName();
@@ -405,21 +437,21 @@ public class ExportXMLWorker extends Worker {
 				String sAux = wRef.getName().toString();
 				if ( sAux.length() == 0 ) {
 					sAux = wRef.getPairName().toString();
-					addChildValue( e, "code", sAux);
+					e.setAttribute( "code", sAux);
 				} else {
-					addChildValue( e, "code", sAux);
-					addChildValue( e, "pairName", wRef.getPairName().toString() );
+					e.setAttribute( "code", sAux);
+					e.setAttribute( "pairName", wRef.getPairName().toString() );
 				}
 
-				addChildValue( e, "baseConcept", sBase.getCamelCase().toString());
-				addChildValue( e, "refConcept", wTable.getName().getCamelCase().toString());
+				e.setAttribute("baseConcept", sBase.getCamelCase().toString());
+				e.setAttribute("refConcept", wTable.getName().getCamelCase().toString());
 				
 				// Multiplicity
-				addChildValue( e, "baseMin", wRef.getBase().getMin() );
-				addChildValue( e, "baseMax", wRef.getBase().getMax() );
+				addChildAttr( e, "baseMin", wRef.getBase().getMin() );
+				addChildAttr( e, "baseMax", wRef.getBase().getMax() );
 
-				addChildValue( e, "refMin", wRef.getRefe().getMin() );
-				addChildValue( e, "refMax", wRef.getRefe().getMax() );
+				addChildAttr( e, "refMin", wRef.getRefe().getMin() );
+				addChildAttr( e, "refMax", wRef.getRefe().getMax() );
 			
 			}
 		}
@@ -444,51 +476,58 @@ public class ExportXMLWorker extends Worker {
 		addChildValue( e, "type", wCol.getType());
 		
 		s = (wCol.getLength() == 0)? "" : wCol.getLength().toString();  addChildValue( e, "length",s );
-		s = (wCol.getDecLength() == 0)? "" : wCol.getDecLength().toString(); addChildValue( e, "decLength", s );
-		addChildValue( e, "nullable", wCol.getNullAllowed());
+		s = (wCol.getDecLength() == 0)? "" : wCol.getDecLength().toString(); addChildValue( e, "decLength", s , "0");
+		addChildValue( e, "nullable", wCol.getNullAllowed(), "True");
 		
-		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "primary", s);
+		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "unique", s, "False");
 
 		if (wCol.isForeign()) {
 	 		addChildValue( e, "foreign", "True");
 	 		addChildValue( e, "foreignConcept", wCol.getRefTable());
-		} else {
-	 		addChildValue( e, "foreign", "False");
-	 		addChildValue( e, "foreignConcept", "");
 		}
-			
+//		else {
+//	 		addChildValue( e, "foreign", "False");
+//	 		addChildValue( e, "foreignConcept", "");
+//		}
 
 // 		String sAux = '"' + wCol.getDescription() + '"'; 
 //// 	if ((sAux != null ) && (sAux.length() > 1024)){ sAux = sAux.substring(0, 1023); } 
 // 		addChildValue( e, "description", sAux);
+		
+		//	pattern = "<udf name=\"{0}\" value=\"{1}\"/>";
+		String sDesc = wCol.getDescription(); 
+		if (sDesc.length() > 0) { 
+			Element xDesc = xmldoc.createElement("description");
+			xDesc .setAttribute("text", sDesc );
+			e.appendChild(xDesc );
+		}
 		
 		// Udfs  
  		generateColUdfs(xnCl, wCol); 
 }
 
 	private void generateColUdfs(Element xnCl, DbColumnWrapper wCol) throws DbException {
-//		The UDP can be extremely long, you need to be formatted q, if 
+//		The UDP can be extremely long, need to be formatted q, if 
 //		added with no formatting goes straight AddTextNode therefore necessary 
 //		add an attribute or add "" 
 		
+		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
+		if ( uDfs.isEmpty())  return ;   
+			
 		Element e = xmldoc.createElement("udps");
 		Node xnUdfs = xnCl.appendChild(e);
 		
-		//	pattern = "<udf name=\"{0}\" value=\"{1}\"/>";
-		String sDesc = wCol.getDescription(); 
-		if (sDesc.length() > 0) { 
-			e = xmldoc.createElement("description");
-			e.setAttribute("text", sDesc );
-			xnUdfs.appendChild(e);
-		}
-		
-		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		for (DbUdfWrapper udf : uDfs ) {
-
+			String nValue = wCol.getUdfValue(udf.getName()); 
+			if (nValue.length() > 0 ) {
 			e = xmldoc.createElement( udf.getAlias());
-			e.setAttribute( "text", wCol.getUdfValue(udf.getName()));
+				e.setAttribute( "text", nValue);
 			xnUdfs.appendChild(e);
+			}
+		}
 
+		if (!(xnUdfs.hasAttributes() || xnUdfs.hasChildNodes() )) {
+			xnCl.removeChild( e );  
 		}
 
 	}

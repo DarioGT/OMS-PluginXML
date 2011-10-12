@@ -43,6 +43,7 @@ public class DbTableWrapper {
         return sw;
     }
     
+    
     public StringWrapper getSuperTableName() throws DbException {
 
         String s = "";
@@ -204,6 +205,22 @@ public class DbTableWrapper {
         return version;
     }
 
+	public String getDescription() {
+		String description;
+
+		try {
+			description = m_table.getDescription();
+		} catch (DbException ex) {
+			description = "";
+		}
+
+		if ( description == null ) { 
+			description = ""; 
+		}
+		return description;
+	}
+
+    
 //    public final void getPKs() throws DbException {
 //		TODO  Enumera las Pkey 
 //    	  DbORAssociationEnd end = (DbORAssociationEnd) objects[0];
