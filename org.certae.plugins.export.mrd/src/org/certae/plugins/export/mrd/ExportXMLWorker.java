@@ -101,14 +101,17 @@ public class ExportXMLWorker extends Worker {
 	private void addChildValue( Element nRoot , String nName , String nValue  ) 
 	{
 
-//		if ( nValue.length() > 0 ) { 
+		// Script all properties 
+		Boolean scriptAll = false; 
+		
+		if (( nValue.length() > 0 ) || scriptAll )  { 
 
 			Element xChild = xmldoc.createElement(nName);
 		    nRoot.appendChild(xChild);
 		    Text elmnt = xmldoc.createTextNode(nValue);
 		    xChild.appendChild(elmnt);
 
-//		}
+		}
 		
 //		  //create a comment and put it in the xChild element
 //			Element xChild = xmldoc.createElement("Ejemplo");
