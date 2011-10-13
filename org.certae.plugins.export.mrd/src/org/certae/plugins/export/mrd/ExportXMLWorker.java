@@ -173,17 +173,19 @@ public class ExportXMLWorker extends Worker {
 		// pattern = "<project name=\"{0}\">"; 
 		xmldoc = impl.createDocument( null, "domains", null);
 		Element root = xmldoc.getDocumentElement();
-		addChildValue (root,  "origin", "OpenModelSphere 3.2"); 
 
-		//generate UDFs   
-		generateUDFs(root); 
 		
 		Element e = xmldoc.createElement("domain");
 		Element xDomain = (Element) root.appendChild(e);
 		
 //		root.setAttribute( "name", projectName);
 		addChildValue (xDomain,  "code", projectName ); 
+		addChildValue (xDomain,  "origin", "OpenModelSphere 3.2"); 
 
+//		generate UDFs   
+		generateUDFs(xDomain); 
+
+		
 //		Models
 		Element e1 = xmldoc.createElement("models");
 		Element xModels = (Element) xDomain.appendChild(e1);
@@ -205,13 +207,13 @@ public class ExportXMLWorker extends Worker {
 
 	// private methods    ***************************************************************************
 
-	private void generateLinkModel(Element root) throws DOMException, DbException {
+	private void generateLinkModel(Element xDomain) throws DOMException, DbException {
 
 		List<DbLinkModelWrapper> linkModels = m_wProj.getLinkModels();
 		if (linkModels.isEmpty()) return ; 
 		
 		Element e = xmldoc.createElement("linkModels");
-		Node xnLinks = root.appendChild(e);
+		Node xnLinks = xDomain.appendChild(e);
 
 		for (DbLinkModelWrapper linkModel : linkModels ) {
 
@@ -221,7 +223,7 @@ public class ExportXMLWorker extends Worker {
 //			e.setAttribute("destination", linkModel.getDestination().toString());
 			Element xnLm = (Element) xnLinks.appendChild(e);
 
-			addChildValue( e, "name", linkModel.getName().toString());
+			addChildValue( e, "code", linkModel.getName().toString());
 			addChildValue( e, "source", linkModel.getSource().toString());
 			addChildValue( e, "destination", linkModel.getDestination().toString());
 
@@ -249,13 +251,13 @@ public class ExportXMLWorker extends Worker {
 		
 	}
 
-	private void generateUDFs(Element root) throws DbException {
+	private void generateUDFs(Element xDomain) throws DbException {
 
 		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		if (uDfs.isEmpty()) return ; 
 		
 		Element e = xmldoc.createElement("udps");
-		Node xnUdfs = root.appendChild(e);
+		Node xnUdfs = xDomain.appendChild(e);
 
 		//	pattern = "<udf name=\"{0}\" type=\"{1}\" alias=\"{2}\" description=\"{3}\" />";
 		for (DbUdfWrapper udf : uDfs ) {
@@ -268,7 +270,7 @@ public class ExportXMLWorker extends Worker {
 			xnUdfs.appendChild(e);
 
 			addChildValue( e, "code", udf.getName());
-			addChildValue( e, "type", udf.getType());
+			addChildValue( e, "baseType", udf.getType());
 			addChildValue( e, "alias", udf.getAlias());
 			addChildValue( e, "description", udf.getDescription());
 		
@@ -280,10 +282,13 @@ public class ExportXMLWorker extends Worker {
 		// pattern = "<datamodel name=\"{0}\" idmodel=\"{1}\" idref=\"{2}\">"; 
 		idModel = idModel+1; 
 		Element e = xmldoc.createElement("model");
-//		e.setAttribute("name", model.getName());
-		e.setAttribute("idmodel", idModel.toString() );
-		e.setAttribute("idref", idRef.toString() );
 		Element xnDm = (Element) root.appendChild(e);
+
+//		e.setAttribute("idModel", idModel.toString() );
+//		e.setAttribute("idRef", idRef.toString() );
+		addChildValue( e, "idModel", idModel.toString() );
+		addChildValue( e, "idRef", idRef.toString() );
+
 		idRef = idModel; 
 
 //		
@@ -325,7 +330,7 @@ public class ExportXMLWorker extends Worker {
 				addChildValue( e, "code", sAux);
 			} else {
 				addChildValue( e, "code", sAux);
-				addChildValue( e, "pairName", wRef.getPairName().toString() );
+//				addChildValue( e, "pairName", wRef.getPairName().toString() );
 			}
 
 //  		
@@ -355,9 +360,10 @@ public class ExportXMLWorker extends Worker {
 
 		for (DbColumnWrapper wColRef :columns) {
 
-			Element e = xmldoc.createElement( tag);
-			e.setAttribute("name", wColRef.getName().toString());
-			xnRef.appendChild(e);
+			addChildValue( xnRef, tag,  wColRef.getName().toString()); 
+//			Element e = xmldoc.createElement( tag);
+//			e.setAttribute("name", wColRef.getName().toString());
+//			xnRef.appendChild(e);
 
 		}
 		
@@ -392,7 +398,7 @@ public class ExportXMLWorker extends Worker {
 		addChildValue( e, "code", wTable.getName().toString());
 		addChildValue( e, "alias", wTable.getAlias().toString() );
 		addChildValue( e, "physicalName", wTable.getPhysicalName().toString() );
-		addChildValue( e, "superTable", wTable.getSuperTableName().toString() );
+		addChildValue( e, "superConcept", wTable.getSuperTableName().toString() );
 
 		String sDesc = wTable.getDescription(); 
 		if (sDesc.length() > 0) { 
@@ -439,21 +445,21 @@ public class ExportXMLWorker extends Worker {
 				String sAux = wRef.getName().toString();
 				if ( sAux.length() == 0 ) {
 					sAux = wRef.getPairName().toString();
-					e.setAttribute( "code", sAux);
+					addChildValue( e, "code", sAux);
 				} else {
-					e.setAttribute( "code", sAux);
-					e.setAttribute( "pairName", wRef.getPairName().toString() );
+					addChildValue( e, "code", sAux);
+					addChildValue( e, "alias", wRef.getPairName().toString() );
 				}
 
-				e.setAttribute("baseConcept", sBase.getCamelCase().toString());
-				e.setAttribute("refConcept", wTable.getName().getCamelCase().toString());
+//				addChildValue( e, "baseConcept", sBase.getCamelCase().toString());
+				addChildValue( e, "refConcept", wTable.getName().getCamelCase().toString());
 				
 				// Multiplicity
-				addChildAttr( e, "baseMin", wRef.getBase().getMin() );
-				addChildAttr( e, "baseMax", wRef.getBase().getMax() );
+				addChildValue( e, "baseMin", wRef.getBase().getMin() );
+				addChildValue( e, "baseMax", wRef.getBase().getMax() );
 
-				addChildAttr( e, "refMin", wRef.getRefe().getMin() );
-				addChildAttr( e, "refMax", wRef.getRefe().getMax() );
+				addChildValue( e, "refMin", wRef.getRefe().getMin() );
+				addChildValue( e, "refMax", wRef.getRefe().getMax() );
 			
 			}
 		}
@@ -473,18 +479,18 @@ public class ExportXMLWorker extends Worker {
 		addChildValue( e, "alias", wCol.getAlias().toString() );
 		addChildValue( e, "physicalName", wCol.getPhysicalName().toString() );
 
-//		addChildValue( e, "superColumn", wCol.getSuperColName(m_wProj).toString() );
+		addChildValue( e, "superProperty", wCol.getSuperColName(m_wProj).toString() );
 //		addChildValue( e, "type", wCol.getTypeDesc());
-		addChildValue( e, "type", wCol.getType());
+		addChildValue( e, "baseType", wCol.getType());
 		
 		s = (wCol.getLength() == 0)? "" : wCol.getLength().toString();  addChildValue( e, "length",s );
 		s = (wCol.getDecLength() == 0)? "" : wCol.getDecLength().toString(); addChildValue( e, "decLength", s , "0");
-		addChildValue( e, "nullable", wCol.getNullAllowed(), "True");
+		addChildValue( e, "isNullable", wCol.getNullAllowed(), "True");
 		
-		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "unique", s, "False");
+		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "isUnique", s, "False");
 
 		if (wCol.isForeign()) {
-	 		addChildValue( e, "foreign", "True");
+	 		addChildValue( e, "isForeign", "True");
 	 		addChildValue( e, "foreignConcept", wCol.getRefTable());
 		}
 //		else {
@@ -500,7 +506,7 @@ public class ExportXMLWorker extends Worker {
 		String sDesc = wCol.getDescription(); 
 		if (sDesc.length() > 0) { 
 			Element xDesc = xmldoc.createElement("description");
-			xDesc .setAttribute("text", sDesc );
+			xDesc.setAttribute("text", sDesc );
 			e.appendChild(xDesc );
 		}
 		
