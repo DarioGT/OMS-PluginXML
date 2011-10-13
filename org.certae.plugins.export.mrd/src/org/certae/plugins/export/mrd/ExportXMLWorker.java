@@ -451,8 +451,8 @@ public class ExportXMLWorker extends Worker {
 					addChildValue( e, "alias", wRef.getPairName().toString() );
 				}
 
-//				addChildValue( e, "baseConcept", sBase.getCamelCase().toString());
-				addChildValue( e, "refConcept", wTable.getName().getCamelCase().toString());
+				addChildValue( e, "baseConcept", sBase.toString());
+//				addChildValue( e, "refConcept", wTable.getName().getCamelCase().toString());
 				
 				// Multiplicity
 				addChildValue( e, "baseMin", wRef.getBase().getMin() );

@@ -24,11 +24,11 @@
 <foreigns>
 <foreign>
 <code>MetaObj-Domain</code>
-<refConcept>Domain</refConcept>
+<baseConcept>MetaObj</baseConcept>
 </foreign>
 <foreign>
 <code>Domain-Domain</code>
-<refConcept>Domain</refConcept>
+<baseConcept>Domain</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -49,7 +49,7 @@
 <foreigns>
 <foreign>
 <code>Domain-Model</code>
-<refConcept>Model</refConcept>
+<baseConcept>Domain</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -57,11 +57,11 @@
 </foreign>
 <foreign>
 <code>MetaObj-Model</code>
-<refConcept>Model</refConcept>
+<baseConcept>MetaObj</baseConcept>
 </foreign>
 <foreign>
 <code>Model-Model</code>
-<refConcept>Model</refConcept>
+<baseConcept>Model</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -79,7 +79,7 @@
 <foreigns>
 <foreign>
 <code>Model-Concept</code>
-<refConcept>Concept</refConcept>
+<baseConcept>Model</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -87,11 +87,11 @@
 </foreign>
 <foreign>
 <code>MetaObj-Concept</code>
-<refConcept>Concept</refConcept>
+<baseConcept>MetaObj</baseConcept>
 </foreign>
 <foreign>
 <code>Concept-Concept</code>
-<refConcept>Concept</refConcept>
+<baseConcept>Concept</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -121,7 +121,7 @@
 <foreigns>
 <foreign>
 <code>Concept-Relationship</code>
-<refConcept>Relationship</refConcept>
+<baseConcept>Concept</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -181,7 +181,7 @@
 <foreigns>
 <foreign>
 <code>Concept-Property</code>
-<refConcept>Property</refConcept>
+<baseConcept>Concept</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -189,13 +189,13 @@
 </foreign>
 <foreign>
 <code>Relationship-Property</code>
-<refConcept>Property</refConcept>
+<baseConcept>Relationship</baseConcept>
 <refMin>1</refMin>
 <refMax>1</refMax>
 </foreign>
 <foreign>
 <code>MetaObj-Property</code>
-<refConcept>Property</refConcept>
+<baseConcept>MetaObj</baseConcept>
 </foreign>
 </foreigns>
 </concept>
@@ -218,7 +218,7 @@
 <foreigns>
 <foreign>
 <code>UserDefinedProperty-MetaObj</code>
-<refConcept>MetaObj</refConcept>
+<baseConcept>UserDefinedProperty</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -248,7 +248,7 @@
 <foreigns>
 <foreign>
 <code>MetaObj-UserDefinedProperty</code>
-<refConcept>UserDefinedProperty</refConcept>
+<baseConcept>MetaObj</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -269,7 +269,7 @@
 <foreigns>
 <foreign>
 <code>MetaObj-MetaLink</code>
-<refConcept>MetaLink</refConcept>
+<baseConcept>MetaObj</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -277,7 +277,7 @@
 </foreign>
 <foreign>
 <code>MetaObj-MetaLink</code>
-<refConcept>MetaLink</refConcept>
+<baseConcept>MetaObj</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -307,7 +307,7 @@
 <foreigns>
 <foreign>
 <code>Concept-NavigationLink</code>
-<refConcept>NavigationLink</refConcept>
+<baseConcept>Concept</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -315,7 +315,7 @@
 </foreign>
 <foreign>
 <code>Concept-NavigationLink</code>
-<refConcept>NavigationLink</refConcept>
+<baseConcept>Concept</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -342,7 +342,7 @@
 <foreigns>
 <foreign>
 <code>Concept-EntryPoints</code>
-<refConcept>EntryPoints</refConcept>
+<baseConcept>Concept</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>1</baseMax>
 <refMin>0</refMin>
@@ -350,7 +350,7 @@
 </foreign>
 <foreign>
 <code>Domain-EntryPoints</code>
-<refConcept>EntryPoints</refConcept>
+<baseConcept>Domain</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -374,7 +374,7 @@
 <foreigns>
 <foreign>
 <code>EntryPoints-Menu</code>
-<refConcept>Menu</refConcept>
+<baseConcept>EntryPoints</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -392,7 +392,7 @@
 <foreigns>
 <foreign>
 <code>Model-ModelGraphic</code>
-<refConcept>ModelGraphic</refConcept>
+<baseConcept>Model</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -416,7 +416,7 @@
 <foreigns>
 <foreign>
 <code>MetaObj-Traduction</code>
-<refConcept>Traduction</refConcept>
+<baseConcept>MetaObj</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
@@ -452,7 +452,7 @@
 <foreigns>
 <foreign>
 <code>DiscreteValues-DiscreteList</code>
-<refConcept>DiscreteList</refConcept>
+<baseConcept>DiscreteValues</baseConcept>
 <baseMin>0</baseMin>
 <baseMax>N</baseMax>
 <refMin>1</refMin>
