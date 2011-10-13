@@ -256,13 +256,13 @@ public class ExportXMLWorker extends Worker {
 		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
 		if (uDfs.isEmpty()) return ; 
 		
-		Element e = xmldoc.createElement("udps");
+		Element e = xmldoc.createElement("udpDefinitions");
 		Node xnUdfs = xDomain.appendChild(e);
 
 		//	pattern = "<udf name=\"{0}\" type=\"{1}\" alias=\"{2}\" description=\"{3}\" />";
 		for (DbUdfWrapper udf : uDfs ) {
 
-			e = xmldoc.createElement( "udp");
+			e = xmldoc.createElement( "udpDefinition");
 //			e.setAttribute("name", udf.getName());
 //			e.setAttribute("type", udf.getType());
 //			e.setAttribute("alias", udf.getAlias());

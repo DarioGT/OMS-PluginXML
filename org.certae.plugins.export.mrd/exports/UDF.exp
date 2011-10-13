@@ -1,70 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <domains>
-  <udps>
-    <udp>
-      <code>FORMAT</code>
-      <baseType>Multiline Text</baseType>
-      <alias>FORMAT</alias>
-    </udp>
-    <udp>
-      <code>GABARIT</code>
-      <baseType>Multiline Text</baseType>
-      <alias>GABARIT</alias>
-    </udp>
-    <udp>
-      <code>DÉFINITION</code>
-      <baseType>Multiline Text</baseType>
-      <alias>DEFINITION</alias>
-    </udp>
-    <udp>
-      <code>DESCRIPTION CN</code>
-      <baseType>Multiline Text</baseType>
-      <alias>DESCRIPTIONCN</alias>
-    </udp>
-    <udp>
-      <code>PRÉCISIONS</code>
-      <baseType>Multiline Text</baseType>
-      <alias>PRECISIONS</alias>
-    </udp>
-    <udp>
-      <code>VALIDATIONS SUR ÉLÉMENT</code>
-      <baseType>Multiline Text</baseType>
-      <alias>VALIDATIONSSURELEMENT</alias>
-    </udp>
-    <udp>
-      <code>REQUIS PAR</code>
-      <baseType>Multiline Text</baseType>
-      <alias>REQUISPAR</alias>
-    </udp>
-    <udp>
-      <code>SOURCE DE DONNÉES EXTERNES</code>
-      <baseType>Multiline Text</baseType>
-      <alias>SOURCEDEDONNEESEXTERNES</alias>
-    </udp>
-    <udp>
-      <code>TRANSMISSION</code>
-      <baseType>Multiline Text</baseType>
-      <alias>TRANSMISSION</alias>
-    </udp>
-    <udp>
-      <code>VALIDATIONS INTER-ÉLÉMENTS</code>
-      <baseType>Multiline Text</baseType>
-      <alias>VALIDATIONSINTERELEMENTS</alias>
-    </udp>
-    <udp>
-      <code>DOMAINE DE VALEURS</code>
-      <baseType>Multiline Text</baseType>
-      <alias>DOMAINEDEVALEURS</alias>
-    </udp>
-    <udp>
-      <code>Prueba</code>
-      <baseType>String</baseType>
-      <alias>Prueba</alias>
-    </udp>
-  </udps>
   <domain>
     <code>UDF</code>
     <origin>OpenModelSphere 3.2</origin>
+    <udpDefinitions>
+      <udpDefinition>
+        <code>FORMAT</code>
+        <baseType>Multiline Text</baseType>
+        <alias>FORMAT</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>GABARIT</code>
+        <baseType>Multiline Text</baseType>
+        <alias>GABARIT</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>DÉFINITION</code>
+        <baseType>Multiline Text</baseType>
+        <alias>DEFINITION</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>DESCRIPTION CN</code>
+        <baseType>Multiline Text</baseType>
+        <alias>DESCRIPTIONCN</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>PRÉCISIONS</code>
+        <baseType>Multiline Text</baseType>
+        <alias>PRECISIONS</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>VALIDATIONS SUR ÉLÉMENT</code>
+        <baseType>Multiline Text</baseType>
+        <alias>VALIDATIONSSURELEMENT</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>REQUIS PAR</code>
+        <baseType>Multiline Text</baseType>
+        <alias>REQUISPAR</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>SOURCE DE DONNÉES EXTERNES</code>
+        <baseType>Multiline Text</baseType>
+        <alias>SOURCEDEDONNEESEXTERNES</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>TRANSMISSION</code>
+        <baseType>Multiline Text</baseType>
+        <alias>TRANSMISSION</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>VALIDATIONS INTER-ÉLÉMENTS</code>
+        <baseType>Multiline Text</baseType>
+        <alias>VALIDATIONSINTERELEMENTS</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>DOMAINE DE VALEURS</code>
+        <baseType>Multiline Text</baseType>
+        <alias>DOMAINEDEVALEURS</alias>
+      </udpDefinition>
+      <udpDefinition>
+        <code>Prueba</code>
+        <baseType>String</baseType>
+        <alias>Prueba</alias>
+      </udpDefinition>
+    </udpDefinitions>
     <models>
       <model>
         <idModel>1</idModel>
@@ -180,8 +180,22 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="CARTED'APPEL(DEMANDED'ASSISTANCEPREHOSPITALIERE)" baseMax="N" baseMin="1" code="CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-PRISE APPEL " refConcept="PRISEAPPEL" refMax="1" refMin="1" />
-              <foreign baseConcept="CCS" baseMax="N" baseMin="0" code="CCS-PRISE APPEL " refConcept="PRISEAPPEL" refMax="1" refMin="1" />
+              <foreign>
+                <code>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-PRISE APPEL </code>
+                <refConcept>PRISEAPPEL</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>CCS-PRISE APPEL </code>
+                <refConcept>PRISEAPPEL</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -263,8 +277,22 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="MUNICIPALITE" baseMax="N" baseMin="0" code="MUNICIPALITÉ-(PRISE EN CHARGE)" refConcept="(PRISEENCHARGE)" refMax="1" refMin="1" />
-              <foreign baseConcept="LIEU" baseMax="1" baseMin="0" code="LIEU-(PRISE EN CHARGE)" refConcept="(PRISEENCHARGE)" refMax="1" refMin="1" />
+              <foreign>
+                <code>MUNICIPALITÉ-(PRISE EN CHARGE)</code>
+                <refConcept>(PRISEENCHARGE)</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>LIEU-(PRISE EN CHARGE)</code>
+                <refConcept>(PRISEENCHARGE)</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>1</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -275,7 +303,7 @@
                 <alias>401, 402</alias>
                 <length>8</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text="ÉLÉMENT 401 CODE DU LIEU DE DESTINATION&#xA;&#xA; FORMAT Alphanumérique Longueur : 8&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le code de l’installation sociosanitaire, de l’établissement carcéral, de l’aéroport ou du lieu hors Québec / hors Canada identifié comme lieu de destination.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION &#x9;Cette information est obligatoire.&#xA;&#xA; PRÉCISION&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Validation de format automatique au transfert.&#xA;&#xA;Validation interéléments&#xA;Doit correspondre au code de lieu de destination.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR&#x9;Le MSSS, les agences de santé et les CCS.&#xA; &#xA; SOURCES DE DONNÉES EXTERNES Référentiel ministériel M34, RODIS, liste d’institutions carcérales, liste des aéroports.&#xA;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#x9;&#x9;&#xA;Liste des valeurs permises :&#xA;Cette information est chargée dans les RAO des CCS.&#xA;&#xA;&#xA;&#xA;ÉLÉMENT 402 CODE DU LIEU DE PRISE EN CHARGE DE L'USAGER&#xA;&#xA; FORMAT Alphanumérique Longueur : 8&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le code de l’installation sociosanitaire, de l’établissement carcéral, de l’aéroport, ou du lieu hors Québec identifié comme lieu de prise en charge de l’usager.&#xA;&#xA; ÉTAPE&#x9;Première étape &#xA;&#xA; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA; PRÉCISION&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Validation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Référentiel ministériel M34, RODIS, liste d’institutions carcérales, liste des aéroports.&#xA;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#x9;&#x9;&#xA;Liste des valeurs permises :&#xA;&#xA;Cette information est chargée dans les RAO des CCS.&#xA;&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 8&#xA;&#xA;" />
@@ -335,8 +363,22 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="INSTALLATION" baseMax="N" baseMin="1" code="INSTALLATION-LIEU" refConcept="LIEU" refMax="1" refMin="0" />
-              <foreign baseConcept="AUTRESORGANISMES" baseMax="N" baseMin="1" code="AUTRES ORGANISMES-LIEU" refConcept="LIEU" refMax="1" refMin="0" />
+              <foreign>
+                <code>INSTALLATION-LIEU</code>
+                <refConcept>LIEU</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>0</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>AUTRES ORGANISMES-LIEU</code>
+                <refConcept>LIEU</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>0</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -347,7 +389,7 @@
                 <alias>314</alias>
                 <length>2</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 2&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le numéro d’identification du centre de communication santé ayant traité l’appel.&#xA;&#xA; DESCRIPTION &#x9;Cette information est obligatoire.&#xA;&#xA; PRÉCISION La valeur de cet élément est générée par le mécanisme d'extraction du CCS pour toutes les lignes d'enregistrement transmises à SIGSPU.&#xA;&#xA; VALIDATION &#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES&#x9;Carte d’appel des RAO.&#xA;&#x9;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de &#x9;données.&#xA;&#xA; VALEURS PERMISES&#x9;&#xA;&#xA;00&#x9;Urgences-santé&#xA;01&#x9;Centre d’appel d’urgence des régions de l’Est du Québec (CAUREQ)&#xA;02&#x9;Centre de communication santé Chaudière-Appalaches (division CAUCA)&#xA;03&#x9;Centre de communication santé des Capitales&#xA;04&#x9;Centre de communication santé de la Mauricie et du Centre-du-Québec&#xA;05&#x9;Centre de communication santé de l’Estrie&#xA;06&#x9;Groupe Alerte Santé inc.&#xA;07&#x9;Centre de communication santé de l’Outaouais&#xA;08&#x9;Centre de communication santé de l’Abitibi-Témiscamingue&#xA;09&#x9;Centre de communication santé Laurentides – Lanaudière&#xA;&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 2&#xA;&#xA;" />
@@ -393,7 +435,7 @@
                 <alias>206, 207</alias>
                 <length>5</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text="ÉLÉMENT 206 MUNICIPALITÉ DE DESTINATION&#xA;&#xA; FORMAT Alphanumérique Longueur : 5&#xA;&#xA; DÉFINITION Champ permettant d’identifier le code de la ville ou de la municipalité de destination de l’usager.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION Cette information est obligatoire.&#xA;&#xA; PRÉCISION Le CCS transmet les codes correspondant à ceux du référentiel territorial M34 du MSSS. Ce référentiel comprend également les régions hors Québec et hors Canada.&#xA;&#xA; VALIDATION &#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation inter éléments&#xA;L’élément 206 doit correspondre à l’élément 218.&#xA;&#xA;Validation sur la valeur&#xA;Le code de la municipalité doit correspondre à celui du référentiel M34.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Référentiel territorial M34.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#xA;&#xA;&#xA;ÉLÉMENT 207 MUNICIPALITÉ DE PRISE EN CHARGE DE L'USAGER&#xA;&#xA; FORMAT Numérique Longueur : 5&#xA;&#xA; DÉFINITION Champ permettant d’identifier le code de la ville ou de la municipalité de prise en charge de l’usager.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION Cette information est obligatoire.&#xA;&#xA; PRÉCISION Le CCS transmet les codes correspondant à ceux du référentiel territorial M34 du MSSS. Ce référentiel comprend également les régions hors Québec et hors Canada.&#xA;&#xA; VALIDATION &#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation inter éléments&#xA;L’élément 207 doit correspondre à l’élément 219.&#xA;&#xA;Validation de valeur&#xA;Le code de la municipalité doit correspondre à celui du référentiel M34.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Référentiel territorial M34.&#xA;&#x9; &#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 5&#xA;&#xA;" />
@@ -412,7 +454,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="ZONEAMBULANCIERE" baseMax="N" baseMin="1" code="ZONE AMBULANCIÈRE -MUNICIPALITÉ" refConcept="MUNICIPALITE" refMax="1" refMin="1" />
+              <foreign>
+                <code>ZONE AMBULANCIÈRE -MUNICIPALITÉ</code>
+                <refConcept>MUNICIPALITE</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -423,7 +472,7 @@
                 <alias>208</alias>
                 <length>14</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 14&#xA;Gabarit&#x9;CSAAAAMMJJXXXX&#xA;&#xA; DÉFINITION Champ permettant d’identifier le numéro de la carte d’appel du CCS. &#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION Cette information est obligatoire.&#xA;&#xA; PRÉCISION Ce champ permet de relier les données relatives aux appels, aux affectations avec ou sans transport ainsi qu’aux ressources préhospitalières (services ambulanciers et premiers répondants). Le numéro de la carte d’appel se compose :&#xA;&#xA;• du numéro du CCS où se produit l’événement (2 positions)&#xA;• de l’année de l’événement (4 positions)&#xA;• du mois de l’événement (2 positions)&#xA;• du jour de l’événement (2 positions)&#xA;• d’un numéro séquentiel quotidien (4 positions).&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Validation de format automatique au transfert.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#xA;&#x9;&#x9; &#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données. &#xA;&#xA; VALEURS PERMISES&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 14&#xA;" />
@@ -509,7 +558,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="CCS" baseMax="N" baseMin="0" code="CCS-CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)" refConcept="CARTED'APPEL(DEMANDED'ASSISTANCEPREHOSPITALIERE)" refMax="1" refMin="1" />
+              <foreign>
+                <code>CCS-CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)</code>
+                <refConcept>CARTED'APPEL(DEMANDED'ASSISTANCEPREHOSPITALIERE)</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -520,7 +576,7 @@
                 <alias>210</alias>
                 <length>4</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 4&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le numéro de véhicule.&#xA;&#xA; DESCRIPTION Cette information est obligatoire.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; PRÉCISION Le numéro de véhicule se compose comme suit : Le 1er chiffre correspond au numéro du CCS (entre 0 et 9) et est suivi de trois (3) autres chiffres.&#xA;&#xA;Le champ vise également les numéros des véhicules de remplacement (mulets).&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES &#xA;Liste des valeurs permises :&#xA;Cette information est à obtenir des CCS.&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 4&#xA;&#xA;" />
@@ -545,7 +601,7 @@
                 <alias>316</alias>
                 <length>9</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur: 9&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le code du statut de la ressource ambulancière et de l’activité qui lui est liée.&#xA;&#xA; ÉTAPE&#x9;Étape ultérieure&#xA;&#xA;DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA;Ce champ s’applique aux horaires à l’heure ainsi qu’aux horaires de faction.&#xA;&#xA; PRÉCISION Statut = en affectation (A), disponible (D), non disponible (N)&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Carte d’appel et feuille de route des RAO.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES Liste des valeurs permises :&#xA;&#xA;A (activités où la ressource est réputée en affectation)&#xA;A(10-3)&#x9;        Affectation / Message annulé&#xA;A(10-0-8)&#x9;Interception immédiate et imprévue&#xA;A(10-16)&#x9;En direction sans feux d’urgence ni sirène&#xA;A(10-17)&#x9;Arrivée sur les lieux&#xA;A(10-26)&#x9;Pré-alerte ou affectation anticipée&#xA;A(10-30)&#x9;En direction avec feux d’urgence et, au besoin, sirène&#xA;A(10-31)&#x9;Changement d’établissement&#xA;A(10-41)&#x9;Scène non sécurisée&#xA;A(10-63)&#x9;Approche finale sans feux d’urgence ni sirène&#xA;D(activités où la ressource est réputée disponible pour répondre à un appel)&#xA;D(10-5)&#x9;        Disponible&#xA;D(10-84)&#x9;Ronde avant départ (inspection) et inventaire du véhicule&#xA;D(10-85)&#x9;Ravitaillement en carburant&#xA;D(10-86)&#x9;Début de disponibilité aux appels&#xA;D(10-87)&#x9;Rapprochement vers le point de service&#xA;D(10-88)&#x9;Nettoyage / réapprovisionnement du véhicule en fin de quart&#xA;D(10-90)&#x9;Disponibilité spéciale&#xA;D(10-0-9)&#x9;Période de repas et disponible&#xA;D(10-12)&#x9;Poste d’attente / Arrivée sur le poste d’attente ou point de service&#xA;D(10-25)&#x9;Disponibilité partielle&#xA;D(10-27)&#x9;Disponible à l’établissement / en rédaction&#xA;D(4)&#x9;        Réapprovisionnement de fournitures&#xA;D(1)&#x9;        Déplacement vers le territoire du CCS&#xA;D(2)&#x9;        Déplacement vers la zone d’opération&#xA;D(5)&#x9;        Escorte&#xA;N(activité où la ressource n’est pas disponible pour répondre à un appel) &#xA;N(10-0-6)&#x9;Non disponible&#xA;N(10-89)&#x9;Fin de disponibilité aux appels&#xA;N(10-0-9)&#x9;Période de repas et non disponible&#xA;N(10-14)&#x9;Collision impliquant un véhicule d’intervention&#xA;N(10-23)&#x9;Affectation de nature administrative&#xA;N(1)&#x9;        Retard&#xA;N(2)&#x9;        Formation&#xA;N(3)&#x9;        Bris mécanique&#xA;N(4)&#x9;        Réapprovisionnement de fournitures&#xA;N(6)&#x9;        Problème mécanique&#xA;N(7)&#x9;        Problème radio&#xA;N(8)&#x9;        Personnel blessé, malade, raison personnelle&#xA;N(9)&#x9;        Autre&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur: 9&#xA;&#xA;" />
@@ -578,7 +634,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="RESSOURCEPREHOSPITALIERE" baseMax="N" baseMin="0" code="RESSOURCE PRÉHOSPITALIÈRE-STATUT RESSOURCE PRÉHOSPITALIÈRE" refConcept="STATUTRESSOURCEPREHOSPITALIERE" refMax="1" refMin="1" />
+              <foreign>
+                <code>RESSOURCE PRÉHOSPITALIÈRE-STATUT RESSOURCE PRÉHOSPITALIÈRE</code>
+                <refConcept>STATUTRESSOURCEPREHOSPITALIERE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -589,7 +652,7 @@
                 <alias>211</alias>
                 <length>2</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 2&#xA;&#xA; DÉFINITION Champ permettant d’identifier le numéro séquentiel de chacune des affectations d’une même carte d’appel.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION Cette information est obligatoire.&#xA;&#xA; PRÉCISION Ce champ comprend les affectations des premiers répondants et des ressources ambulancières.&#xA;&#xA;Le terme « ressources ambulancières » réfère à un véhicule ambulancier et une équipe composée de deux TAP.&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES Numéro séquentiel débutant à 1 et incrémental de 1 pour chaque valeur.&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 2&#xA;&#xA;" />
@@ -733,9 +796,30 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="STATUTRESSOURCEPREHOSPITALIERE" baseMax="N" baseMin="0" code="STATUT RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE" refConcept="AFFECTATIONRESSOURCE" refMax="1" refMin="1" />
-              <foreign baseConcept="CARTED'APPEL(DEMANDED'ASSISTANCEPREHOSPITALIERE)" baseMax="N" baseMin="0" code="CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-AFFECTATION RESSOURCE" refConcept="AFFECTATIONRESSOURCE" refMax="1" refMin="1" />
-              <foreign baseConcept="RESSOURCEPREHOSPITALIERE" baseMax="N" baseMin="0" code="RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE" refConcept="AFFECTATIONRESSOURCE" refMax="1" refMin="1" />
+              <foreign>
+                <code>STATUT RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE</code>
+                <refConcept>AFFECTATIONRESSOURCE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>CARTE D'APPEL (DEMANDE D'ASSISTANCE PREHOSPITALIERE)-AFFECTATION RESSOURCE</code>
+                <refConcept>AFFECTATIONRESSOURCE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>RESSOURCE PRÉHOSPITALIÈRE-AFFECTATION RESSOURCE</code>
+                <refConcept>AFFECTATIONRESSOURCE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -746,7 +830,7 @@
                 <alias>301</alias>
                 <length>1</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 1 &#xA;&#xA; DÉFINITION Champ permettant d’indiquer le type d'horaire de travail du personnel du CCS : jour, soir, nuit.&#xA;&#xA; ÉTAPE&#x9;Étape ultérieure&#xA;&#xA; DESCRIPTION Ce champ est facultatif lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA; PRÉCISION &#x9;&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#xA;J&#x9;08 h 00 à 16 h 00&#xA;S&#x9;16 h 00 à 24 h 00&#xA;N&#x9;00 h 00 à 08 h 00&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 1 &#xA;&#xA;" />
@@ -843,11 +927,46 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="CCS" baseMax="N" baseMin="0" code="CCS-QUART DE TRAVAIL" refConcept="QUARTDETRAVAIL" refMax="1" refMin="1" />
-              <foreign baseConcept="ETATQUARTDETRAVAIL" baseMax="N" baseMin="0" code="ÉTAT QUART DE TRAVAIL-QUART DE TRAVAIL" refConcept="QUARTDETRAVAIL" refMax="1" refMin="1" />
-              <foreign baseConcept="MOTIFAJOUTQUARTAMBULANCIER" baseMax="N" baseMin="0" code="MOTIF AJOUT QUART AMBULANCIER-QUART DE TRAVAIL" refConcept="QUARTDETRAVAIL" refMax="1" refMin="0" />
-              <foreign baseConcept="MOTIFANNULATIONQUARTAMBULANCIER" baseMax="N" baseMin="0" code="MOTIF ANNULATION QUART AMBULANCIER-QUART DE TRAVAIL" refConcept="QUARTDETRAVAIL" refMax="1" refMin="0" />
-              <foreign baseConcept="TYPEDEQUARTDETRAVAIL" baseMax="N" baseMin="0" code="TYPE DE QUART DE TRAVAIL-QUART DE TRAVAIL" refConcept="QUARTDETRAVAIL" refMax="1" refMin="0" />
+              <foreign>
+                <code>CCS-QUART DE TRAVAIL</code>
+                <refConcept>QUARTDETRAVAIL</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>ÉTAT QUART DE TRAVAIL-QUART DE TRAVAIL</code>
+                <refConcept>QUARTDETRAVAIL</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>MOTIF AJOUT QUART AMBULANCIER-QUART DE TRAVAIL</code>
+                <refConcept>QUARTDETRAVAIL</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>0</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>MOTIF ANNULATION QUART AMBULANCIER-QUART DE TRAVAIL</code>
+                <refConcept>QUARTDETRAVAIL</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>0</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>TYPE DE QUART DE TRAVAIL-QUART DE TRAVAIL</code>
+                <refConcept>QUARTDETRAVAIL</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>0</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -858,7 +977,7 @@
                 <alias>303</alias>
                 <length>1</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 1&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le titre d’un emploi rattaché aux opérations du CCS.&#xA;&#xA; ÉTAPE&#x9;Étape ultérieure&#xA;&#xA; DESCRIPTION &#x9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA; PRÉCISION &#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES &#xA;Titres d’emploi :&#xA;1&#x9;RMU&#xA;2&#x9;Commis à l’interétablissement&#xA;3&#x9;Répartiteur&#xA;4&#x9;Superviseur&#xA;&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 1&#xA;&#xA;" />
@@ -921,9 +1040,30 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="CCS" baseMax="N" baseMin="0" code="CCS-EMPLOI" refConcept="EMPLOI" refMax="1" refMin="1" />
-              <foreign baseConcept="STATUTRESSOURCEPREHOSPITALIERE" baseMax="N" baseMin="0" code="STATUT RESSOURCE PRÉHOSPITALIÈRE-EMPLOI" refConcept="EMPLOI" refMax="1" refMin="1" />
-              <foreign baseConcept="STATUTEMPLOI" baseMax="N" baseMin="0" code="STATUT EMPLOI-EMPLOI" refConcept="EMPLOI" refMax="1" refMin="1" />
+              <foreign>
+                <code>CCS-EMPLOI</code>
+                <refConcept>EMPLOI</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>STATUT RESSOURCE PRÉHOSPITALIÈRE-EMPLOI</code>
+                <refConcept>EMPLOI</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>STATUT EMPLOI-EMPLOI</code>
+                <refConcept>EMPLOI</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -934,7 +1074,7 @@
                 <alias>218, 219</alias>
                 <length>5</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text="ÉLÉMENT 218 ZONE AMBULANCIÈRE DE DESTINATION&#xA;&#xA; FORMAT Alphanumérique Longueur : 5&#xA;&#xA; DÉFINITION Champ permettant d’identifier la zone ambulancière de destination de l’usager.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION&#x9;Cette information est obligatoire.&#xA;&#xA; PRÉCISION&#x9;&#xA;&#xA; VALIDATION&#x9;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation inter éléments&#xA;L’élément 218 doit correspondre à l’élément 206.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR&#x9;Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Référentiel territorial M34.&#xA;&#x9; &#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES Liste des valeurs permises :&#xA;&#xA;^Même domaine de valeurs que l'élément 219. Voir en bas.&#xA;&#xA;&#xA;&#xA;ÉLÉMENT 219 ZONE AMBULANCIÈRE DE PRISE EN CHARGE DE L'USAGER&#xA;&#xA; FORMAT Alphanumérique Longueur : 5&#xA;&#xA; DÉFINITION Champ permettant d’identifier la zone ambulancière de prise en charge de l’usager.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION&#x9;Cette information est obligatoire.&#xA;&#xA; PRÉCISION&#x9;&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation de valeur&#xA;L’élément 219 doit correspondre à l’élément 207.&#xA;&#xA; REQUIS PAR&#x9;Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES&#x9;Référentiel territorial M34.&#xA;&#x9; &#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES Liste des valeurs permises :&#xA;&#xA;000-HORS PROVINCE;&#xA;001-HORS CANADA;&#xA;005-NUNAVIK;&#xA;070-TERRES-CRIES-DE-LA-BAIE-JAMES;&#xA;101-1 RIMOUSKI;&#xA;101-2 SAINT-FABIEN&#xA;102-MONT-JOLI;&#xA;103-MATANE;&#xA;104-SAINTE-ANNE-DES-MONTS;&#xA;105-GRANDE-VALLÉE;&#xA;106-MONT-LOUIS;&#xA;107-PERCÉ;&#xA;108-GASPÉ;&#xA;109-RIVIÈRE AU RENARD;&#xA;110-GRANDE-RIVIÈRE;&#xA;111-PASPEBIAC;&#xA;112-NEW-RICHMOND;&#xA;113-CARLETON;&#xA;114-SAINT-ALEXIS;&#xA;115-AMQUI;&#xA;116-MURDOCHVILLE;&#xA;117-POINTE-À-LA-CROIX;&#xA;118-CAP-AUX-MEULES;&#xA;119-SAYABEC;&#xA;201-DOLBEAU;&#xA;202-ROBERVAL;&#xA;203-HÉBERTVILLE;&#xA;204-ALMA;&#xA;205-JONQUIÈRE;&#xA;206-CHICOUTIMI;&#xA;208-VILLE DE LA BAIE;&#xA;211-NORMANDIN;&#xA;212-LAC BOUCHETTE;&#xA;213-CHIBOUGAMAU;&#xA;216-CHICOUTIMI-NORD;&#xA;218-RIVIÈRE-ÉTERNITÉ;&#xA;219-PARC CHIBOUGAMAU;&#xA;301-SAINT-SIMÉON;&#xA;302-LA MALBAIE;&#xA;303-BAIE-SAINT-PAUL;&#xA;304-SAINTE-ANNE-DE-BEAUPRÉ;&#xA;305-BEAUPORT;&#xA;306-CHARLESBOURG;&#xA;307-QUÉBEC;&#xA;308-SAINTE-FOY;&#xA;309-LORETTEVILLE;&#xA;310-SAINT-RAYMOND;&#xA;311-SAINT-MARC-DES-CARRIÈRES;&#xA;312-DONNACONA;&#xA;313-TROIS-PISTOLES;&#xA;314-LAC DES AIGLES;&#xA;315-CABANO;&#xA;316-RIVIÈRE-DU-LOUP;&#xA;317-SAINT-PASCAL;&#xA;318-RIVIÈRE-BLEUE;&#xA;319-SAINT-CYPRIEN;&#xA;320-SAINT-PAMPHILE;&#xA;321-LA POCATIÈRE;&#xA;322-SAINT-FABIEN PANET;&#xA;323-SAINT-JEAN PORT-JOLI;&#xA;324-MONTMAGNY;&#xA;325-SAINT-CHARLES;&#xA;326-LÉVIS;&#xA;327-SAINTE-MARIE;&#xA;328-LAC ETCHEMIN;&#xA;329-SAINTE-CLAIRE;&#xA;330-LOTBINIÈRE;&#xA;332-THETFORD-MINES; &#xA;333-DISRAELI; &#xA;334-LA GUADELOUPE;&#xA;335-SAINT-GÉDÉON;&#xA;336-SAINT-GEORGES;&#xA;337-BEAUCEVILLE;&#xA;339-SAINT-FLAVIEN;&#xA;340-ARMAGH;&#xA;341-DÉGELIS;&#xA;342-PARC DES LAURENTIDES;&#xA;343-ÏLE AUX COUDRES;&#xA;344-SAINT-ALEXANDRE;&#xA;346-SAINTE-CATHERINE;&#xA;401-LA TUQUE;&#xA;402-SAINT-TITE;&#xA;403-GRAND-MÈRE;&#xA;404-SHAWINIGAN;&#xA;331-SAINT-SILVESTRE; &#xA;405-SAINT-PAULIN;&#xA;406-LOUISEVILLE;&#xA;409-BATISCAN;&#xA;410-PIERREVILLE;&#xA;411-NICOLET;&#xA;412-BÉCANCOUR;&#xA;413-MANSEAU;&#xA;414-DRUMMONDVILLE;&#xA;415-VICTORIAVILLE;&#xA;416-PLESSISVILLE;&#xA;478-TROIS-RIVIÈRES;&#xA;501-SHERBROOKE;&#xA;502-WINDSOR;&#xA;503-ASBESTOS;&#xA;504-EAST-ANGUS;&#xA;505-MAGOG;&#xA;506-STANSTEAD;&#xA;507-COATICOOK;&#xA;508-LA PATRIE;&#xA;509-RICHMOND;&#xA;510-WEEDON;&#xA;511-LAC MÉGANTIC;&#xA;512-VALCOURT;&#xA;513-EASTMAN;&#xA;514-LAMBTON;&#xA;600-1-MONTRÉAL (centre ouest);&#xA;600-2-MONTRÉAL (nord) (fait référence à la zone 604 de la liste officielle des zones);&#xA;600-3-MONTRÉAL (est);&#xA;600-4-MONTRÉAL (ouest);&#xA;600-5-MONTRÉAL (centre est);&#xA;620-SAINT-EUSTACHE;&#xA;621-OKA;&#xA;621-A KANESATAKE&#xA;622-LACHUTE;&#xA;623-GRENVILLE;&#xA;624-SAINTE-THÉRÈSE;&#xA;625-TERREBONNE;&#xA;626-SAINT-JÉRÔME;&#xA;627-MIRABEL;&#xA;628-SAINTE-ADÈLE;&#xA;629-SAINTE-AGATHE-DES-MONTS;&#xA;630-SAINT-JOVITE;&#xA;631-SAINT-DONAT;&#xA;632-LABELLE;&#xA;633-VILLE-DES-LAURENTIDES;&#xA;634-REPENTIGNY;&#xA;635-BERTHIERVILLE;&#xA;636-JOLIETTE;&#xA;637-RAWDON;&#xA;638-SAINT-GABRIEL;&#xA;639-SAINT-JEAN-DE-MATHA;&#xA;641-L'ANNONCIATION;&#xA;642-FERME-NEUVE;&#xA;643-MONT-LAURIER;&#xA;660-RIGAUD;&#xA;661-DORION;&#xA;662-VALLEYFIELD;&#xA;663-HUNTINGDON;&#xA;664-ORMSTOWN;&#xA;665-CHATEAUGUAY&#xA;665-A KANHAWAKE;&#xA;666-LAPRAIRIE;&#xA;667-LACOLLE;&#xA;668-SAINT-JEAN;&#xA;669-LONGUEUIL OUEST;&#xA;670-LONGUEUIL EST;&#xA;671-SAINT-HUBERT;&#xA;672-SAINT-BRUNO;&#xA;673-VARENNES;&#xA;674-BELOEIL;&#xA;640-SAINT-MICHEL-DES-SAINTS; &#xA;675-SOREL;&#xA;676-SAINT-HYACINTHE; &#xA;677-CHAMBLY;&#xA;678-ACTON VALE; &#xA;679-GRANBY;&#xA;681-WATERLOO;&#xA;683-COWANSVILLE;&#xA;684-FARNHAM;&#xA;685-BEDFORD;&#xA;701-FORT COULONGE;&#xA;702-SHAWVILLE;&#xA;703-AYLMER;&#xA;704-MASHAM;&#xA;705-HULL;&#xA;706-GATINEAU;&#xA;707-BUCKINGHAM;&#xA;708-PAPINEAUVILLE;&#xA;709-SAINT-ANDRÉ-AVELLIN;&#xA;710-GRACEFIELD;&#xA;711-NOTRE-DAME-DU-LAUS;&#xA;712-MANIWAKI;&#xA;713-PARC DE LA VERENDRYE;&#xA;801-TÉMISCAMING;&#xA;802-VILLE-MARIE;&#xA;803-ROUYN-NORANDA;&#xA;804-LA SARRE;&#xA;805-AMOS;&#xA;806-VAL D'OR;&#xA;807-SENNETERRE;&#xA;808-LEBEL SUR QUEVILLON;&#xA;809-MATAGAMI;&#xA;810-MALARTIC;&#xA;811-NOTRE-DAME-DU-NORD;&#xA;812-PARC DE LA VERENDRYE;&#xA;820-BELLETERRE;&#xA;900-SACRÉ-CŒUR;&#xA;901-LES ESCOUMINS;&#xA;902-FORESTVILLE;&#xA;903-BAIE-COMEAU;&#xA;904-MANIC 5;&#xA;905-BAIE-TRINITÉ;&#xA;906-PORT CARTIER;&#xA;907-SEPT-ÎLES;&#xA;909-HAVRE SAINT-PIERRE;&#xA;912-BLANC-SABLON;&#xA;914-FERMONT;&#xA;915-SHEFFERVILLE.&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 5&#xA;&#xA;" />
@@ -953,7 +1093,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="RSS" baseMax="N" baseMin="1" code="RSS-ZONE AMBULANCIÈRE " refConcept="ZONEAMBULANCIERE" refMax="1" refMin="1" />
+              <foreign>
+                <code>RSS-ZONE AMBULANCIÈRE </code>
+                <refConcept>ZONEAMBULANCIERE</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -963,7 +1110,7 @@
                 <code>Code region sociosanitaire</code>
                 <length>4</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text="On utilise un code numérique à quatre chiffres pour identifier de façon distincte les régions&#xA;sociosanitaires. Les deux premiers chiffres correspondent à la province, et les deux derniers, à la&#xA;région sociosanitaire. Ces codes sont les mêmes que ceux utilisés par les ministères provinciaux de la&#xA;santé. Dans le cas des provinces où il n'existe pas de code numérique, un code à deux chiffres est&#xA;attribué.&#xA;&#xA;&#xA;&#xA;source:&#xA;http://dsp-psd.pwgsc.gc.ca/collection_2009/statcan/82-402-X/82-402-x2009001-fra.pdf" />
                 <udps>
                   <DOMAINEDEVALEURS text="Québec&#xA;2401 Région du Bas-Saint–Laurent&#xA;2402 Région du Saguenay – Lac–Saint–Jean&#xA;2403 Région de la Capitale–Nationale&#xA;2404 Région de la Mauricie et du Centre–du–Québec&#xA;2405 Région de l'Estrie&#xA;2406 Région de Montréal&#xA;2407 Région de l'Outaouais&#xA;2408 Région de l'Abitibi–Témiscamingue&#xA;2409 Région de la Côte–Nord&#xA;2410 Région du Nord–du–Québec&#xA;2411 Région de la Gaspésie – Îles–de–la–Madeleine&#xA;2412 Région de la Chaudière-Appalaches&#xA;2413 Région de Laval&#xA;2414 Région de Lanaudière&#xA;2415 Région des Laurentides&#xA;2416 Région de la Montérégie&#xA;2417 Région du Nunavik&#xA;2418 Région des Terres–Cries–de–la–Baie–James" />
@@ -1003,8 +1150,22 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="LIEU" baseMax="1" baseMin="0" code="LIEU-DESTINATION" refConcept="DESTINATION" refMax="1" refMin="1" />
-              <foreign baseConcept="MUNICIPALITE" baseMax="N" baseMin="0" code="MUNICIPALITÉ-DESTINATION" refConcept="DESTINATION" refMax="1" refMin="1" />
+              <foreign>
+                <code>LIEU-DESTINATION</code>
+                <refConcept>DESTINATION</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>1</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>MUNICIPALITÉ-DESTINATION</code>
+                <refConcept>DESTINATION</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -1014,7 +1175,7 @@
               <property>
                 <code>Numéro de permis ODS</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom légal Établissement</code>
@@ -1080,7 +1241,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="MUNICIPALITE" baseMax="N" baseMin="1" code="MUNICIPALITÉ-ÉTABLISSEMENT" refConcept="ETABLISSEMENT" refMax="1" refMin="1" />
+              <foreign>
+                <code>MUNICIPALITÉ-ÉTABLISSEMENT</code>
+                <refConcept>ETABLISSEMENT</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -1090,7 +1258,7 @@
               <property>
                 <code>Numéro au permis</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom légal installation</code>
@@ -1113,7 +1281,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="ETABLISSEMENT" baseMax="N" baseMin="1" code="ÉTABLISSEMENT-INSTALLATION" refConcept="INSTALLATION" refMax="1" refMin="1" />
+              <foreign>
+                <code>ÉTABLISSEMENT-INSTALLATION</code>
+                <refConcept>INSTALLATION</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -1125,8 +1300,22 @@
             <code>ASSIGNATION VÉHICULE</code>
             <properties />
             <foreigns>
-              <foreign baseConcept="VEHICULE" baseMax="N" baseMin="0" code="VÉHICULE-ASSIGNATION VÉHICULE" refConcept="ASSIGNATIONVEHICULE" refMax="1" refMin="1" />
-              <foreign baseConcept="STATUTRESSOURCEPREHOSPITALIERE" baseMax="N" baseMin="0" code="STATUT RESSOURCE PRÉHOSPITALIÈRE-ASSIGNATION VÉHICULE" refConcept="ASSIGNATIONVEHICULE" refMax="1" refMin="1" />
+              <foreign>
+                <code>VÉHICULE-ASSIGNATION VÉHICULE</code>
+                <refConcept>ASSIGNATIONVEHICULE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>STATUT RESSOURCE PRÉHOSPITALIÈRE-ASSIGNATION VÉHICULE</code>
+                <refConcept>ASSIGNATIONVEHICULE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -1137,7 +1326,7 @@
                 <alias>302</alias>
                 <length>2</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur: 2&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le statut d’emploi des divers postes du CCS.&#xA;&#xA; ÉTAPE&#x9;Étape ultérieure&#xA;&#xA; DESCRIPTION Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA; PRÉCISION&#x9;&#xA;&#xA; VALIDATION Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR&#x9;Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Système administratif du CCS.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#x9;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#xA;1&#x9;Temps plein&#xA;2&#x9;Temps partiel&#xA;3&#x9;Occasionnel&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur: 2&#xA;&#xA;" />
@@ -1152,7 +1341,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="EMPLOI" baseMax="N" baseMin="1" code="EMPLOI-STATUT EMPLOI" refConcept="STATUTEMPLOI" refMax="1" refMin="1" />
+              <foreign>
+                <code>EMPLOI-STATUT EMPLOI</code>
+                <refConcept>STATUTEMPLOI</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -1163,7 +1359,7 @@
                 <alias>307</alias>
                 <length>1</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur : 1&#xA;&#xA; DÉFINITION Champ permettant d’indiquer l’état du quart de travail de la ressource ambulancière : planifié, réel, supplémentaire ou annulé.&#xA;&#xA; ÉTAPE&#x9;Étape ultérieure&#xA;&#xA; DESCRIPTION &#x9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA; PRÉCISION&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR&#x9;Le MSSS, les Agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES&#x9;RAO.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#x9;&#x9;&#xA;&#xA;P&#x9;Planifié&#xA;R&#x9;Réel&#xA;S&#x9;Supplémentaire&#xA;A&#x9;Annulé&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur : 1&#xA;&#xA;" />
@@ -1178,7 +1374,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="QUARTDETRAVAIL" baseMax="N" baseMin="1" code="QUART DE TRAVAIL-ÉTAT QUART DE TRAVAIL" refConcept="ETATQUARTDETRAVAIL" refMax="1" refMin="1" />
+              <foreign>
+                <code>QUART DE TRAVAIL-ÉTAT QUART DE TRAVAIL</code>
+                <refConcept>ETATQUARTDETRAVAIL</refConcept>
+                <baseMin>1</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -1233,7 +1436,7 @@
                 <alias>317</alias>
                 <length>2</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur: 2&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le type d'horaire de travail de la ressource ambulancière.&#xA;&#xA;Horaire à l’heure :&#xA;On entend par horaire à l’heure les horaires de type 8, 9, 10, 11 et 12 heures.&#xA;&#xA;Horaire 7/14 :&#xA;Consiste en une période de faction de cent soixante-huit (168) heures et une période de récupération de cent soixante-huit (168) heures, le tout à l’intérieur d’une période de quatorze (14) jours civils.&#xA;&#xA;Horaire 5/14 :&#xA;Horaire de travail consistant en cinq (5) jours (24 heures par jour) disponibles sur une période de quatorze (14) jours civils consécutifs.&#xA;&#xA; ÉTAPE&#x9;Étape ultérieure&#xA;&#xA; DESCRIPTION &#x9;Cette information est facultative lors de la première étape mais obligatoire lors d’une étape ultérieure.&#xA;&#xA; PRÉCISION&#x9;&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Valdation de format automatique au transfert.&#xA;&#xA;Validation sur la valeur&#xA;L’élément ne peut prendre que les valeurs permises.&#xA;&#xA; REQUIS PAR Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES RAO&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#x9;&#xA;&#xA;10&#x9;8 heures&#xA;11&#x9;9 heures&#xA;12&#x9;10 heures&#xA;13&#x9;11 heures&#xA;14&#x9;12 heures&#xA;20&#x9;Horaire de faction 7/14&#xA;30&#x9;Horaire de faction 5/14&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur: 2&#xA;&#xA;" />
@@ -1258,7 +1461,7 @@
                 <alias>318</alias>
                 <length>2</length>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
                 <description text=" FORMAT Alphanumérique Longueur: 2&#xA;&#xA; DÉFINITION Champ permettant d’indiquer le type de ressource préhospitalière.&#xA;&#xA; ÉTAPE&#x9;Première étape&#xA;&#xA; DESCRIPTION Cette information est obligatoire.&#xA;&#xA; PRÉCISION&#xA;&#xA; VALIDATION&#x9;&#xA;Validation sur l’élément&#xA;Validation de présence automatique au transfert.&#xA;Validation de format automatique au transfert.&#xA;&#xA; REQUIS PAR&#x9;Le MSSS, les agences de santé et les CCS.&#xA;&#xA; SOURCES DE DONNÉES EXTERNES Carte d’appel des RAO.&#xA;&#x9;&#xA; TRANSMISSION&#x9;Cette information est transmise à la banque commune de données.&#xA;&#xA; VALEURS PERMISES&#x9;&#xA;Liste des valeurs permises :&#xA;&#xA;10&#x9;Ressources ambulancières&#xA;20&#x9;Premiers répondants&#xA;" />
                 <udps>
                   <FORMAT text="Alphanumérique Longueur: 2&#xA;&#xA;" />
@@ -1273,7 +1476,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseConcept="STATUTRESSOURCEPREHOSPITALIERE" baseMax="N" baseMin="0" code="STATUT RESSOURCE PRÉHOSPITALIÈRE-RESSOURCE PRÉHOSPITALIÈRE" refConcept="RESSOURCEPREHOSPITALIERE" refMax="1" refMin="1" />
+              <foreign>
+                <code>STATUT RESSOURCE PRÉHOSPITALIÈRE-RESSOURCE PRÉHOSPITALIÈRE</code>
+                <refConcept>RESSOURCEPREHOSPITALIERE</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
         </concepts>

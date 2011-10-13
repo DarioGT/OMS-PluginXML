@@ -3,13 +3,13 @@
   <domain>
     <code>Exemple de raccordement</code>
     <origin>OpenModelSphere 3.2</origin>
-    <udps>
-      <udp>
+    <udpDefinitions>
+      <udpDefinition>
         <code>PRÉCISION</code>
         <baseType>Multiline Text</baseType>
         <alias>PRECISION</alias>
-      </udp>
-    </udps>
+      </udpDefinition>
+    </udpDefinitions>
     <models>
       <model>
         <idModel>1</idModel>
@@ -22,7 +22,7 @@
               <property>
                 <code>Identifiant contact</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date début contact</code>
@@ -30,9 +30,30 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseMax="N" baseMin="0" code="USAGER-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="INTERVENANT-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="INSTALLATION DE SANTÉ-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
+              <foreign>
+                <code>USAGER-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>INTERVENANT-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>INSTALLATION DE SANTÉ-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -41,7 +62,7 @@
               <property>
                 <code>Identifiant intervenant</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom intervenant</code>
@@ -56,7 +77,7 @@
               <property>
                 <code>Identifiant usager</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom usager</code>
@@ -71,12 +92,12 @@
               <property>
                 <code>Type adresse usager</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date début validité adresse usager</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date fin validité adresse usager</code>
@@ -89,7 +110,14 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseMax="N" baseMin="0" code="USAGER-ADRESSE USAGER" refConcept="ADRESSEUSAGER" refMax="1" refMin="1" />
+              <foreign>
+                <code>USAGER-ADRESSE USAGER</code>
+                <refConcept>ADRESSEUSAGER</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -98,7 +126,7 @@
               <property>
                 <code>Numéro au permis installation</code>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom installation</code>
@@ -124,7 +152,7 @@
                 <code>Identifiant usager</code>
                 <superProperty>Identifiant usager</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom usager</code>
@@ -142,7 +170,7 @@
                 <code>Identifiant intervenant</code>
                 <superProperty>Identifiant intervenant</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom intervenant</code>
@@ -160,7 +188,7 @@
                 <code>Identifiant contact</code>
                 <superProperty>Identifiant contact</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date heure début contact</code>
@@ -169,8 +197,22 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseMax="N" baseMin="0" code="USAGER-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="INTERVENANT-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
+              <foreign>
+                <code>USAGER-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>INTERVENANT-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
         </concepts>
@@ -187,7 +229,7 @@
                 <code>Numéro client</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom client</code>
@@ -204,7 +246,7 @@
                 <code>Numéro préposé</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom préposé</code>
@@ -221,7 +263,7 @@
                 <code>Identifinat interention</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date intervention</code>
@@ -237,8 +279,22 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseMax="N" baseMin="0" code="CLIENT-INTERVENTION" refConcept="INTERVENTION" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="PRÉPOSÉ-INTERVENTION" refConcept="INTERVENTION" refMax="1" refMin="1" />
+              <foreign>
+                <code>CLIENT-INTERVENTION</code>
+                <refConcept>INTERVENTION</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>PRÉPOSÉ-INTERVENTION</code>
+                <refConcept>INTERVENTION</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
         </concepts>
@@ -256,7 +312,7 @@
                 <code>Identifiant contact</code>
                 <superProperty>Identifiant contact</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date début contact</code>
@@ -264,9 +320,30 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseMax="N" baseMin="0" code="USAGER-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="INTERVENANT-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="INSTALLATION DE SANTÉ-CONTACT" refConcept="CONTACT" refMax="1" refMin="1" />
+              <foreign>
+                <code>USAGER-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>INTERVENANT-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>INSTALLATION DE SANTÉ-CONTACT</code>
+                <refConcept>CONTACT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -277,7 +354,7 @@
                 <code>Identifiant intervenant</code>
                 <superProperty>Identifiant intervenant</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom intervenant</code>
@@ -294,7 +371,7 @@
                 <code>Identifiant usager</code>
                 <superProperty>Identifiant usager</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom usager</code>
@@ -311,7 +388,7 @@
                 <code>Numéro au permis installation</code>
                 <superProperty>Numéro au permis installation</superProperty>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom installation</code>
@@ -338,7 +415,7 @@
                 <code>Code patient</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom patient</code>
@@ -363,7 +440,7 @@
                 <code>Code médecin</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom médecin</code>
@@ -380,7 +457,7 @@
                 <code>Code traitement</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Date traitement</code>
@@ -388,9 +465,30 @@
               </property>
             </properties>
             <foreigns>
-              <foreign baseMax="N" baseMin="0" code="PATIENT-TRAITEMENT" refConcept="TRAITEMENT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="MÉDECIN-TRAITEMENT" refConcept="TRAITEMENT" refMax="1" refMin="1" />
-              <foreign baseMax="N" baseMin="0" code="HOPITAL-TRAITEMENT" refConcept="TRAITEMENT" refMax="1" refMin="0" />
+              <foreign>
+                <code>PATIENT-TRAITEMENT</code>
+                <refConcept>TRAITEMENT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>MÉDECIN-TRAITEMENT</code>
+                <refConcept>TRAITEMENT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>1</refMin>
+                <refMax>1</refMax>
+              </foreign>
+              <foreign>
+                <code>HOPITAL-TRAITEMENT</code>
+                <refConcept>TRAITEMENT</refConcept>
+                <baseMin>0</baseMin>
+                <baseMax>N</baseMax>
+                <refMin>0</refMin>
+                <refMax>1</refMax>
+              </foreign>
             </foreigns>
           </concept>
           <concept>
@@ -400,7 +498,7 @@
                 <code>Numéro permis hôpital</code>
                 <baseType>INTEGER</baseType>
                 <isNullable>False</isNullable>
-                <unique>True</unique>
+                <isUnique>True</isUnique>
               </property>
               <property>
                 <code>Nom hôpital</code>
