@@ -150,9 +150,10 @@ public class DbProjectWrapper {
                 DbUDF udf = (DbUDF) enu.nextElement();
                 MetaClass mc = udf.getUDFMetaClass();
 
-                if (DbORColumn.metaClass.isAssignableFrom(mc)) {
-                    udfs.add(udf);
-                }
+//                DGT: lo asignaba solo si era asignable a las Cols 
+//                if (DbORColumn.metaClass.isAssignableFrom(mc)) {
+                udfs.add(udf);
+//                }
             } //end while
             enu.close();
 

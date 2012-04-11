@@ -26,7 +26,7 @@ public class StringWrapper {
         
         for (int i = 0; i < s0.length(); i++) {
             Character currentChar = s0.charAt(i);
-            if (currentChar == '_' || currentChar == ' ' || currentChar == '-') {
+            if (currentChar == '_' || currentChar == ' ' || currentChar == '-' || currentChar == '\'') {
                 nextUpper = true;
             } else {
                 if (nextUpper) {

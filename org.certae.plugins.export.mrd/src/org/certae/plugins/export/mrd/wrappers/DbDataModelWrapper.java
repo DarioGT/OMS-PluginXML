@@ -34,6 +34,20 @@ public class DbDataModelWrapper implements Comparable<DbDataModelWrapper> {
         m_dataModel = dbDataModel;
     }
 
+	public String getUdfValue(String udfName) {
+		String value;
+
+		try {
+			Object o = m_dataModel.getUDF(udfName);
+			value = (o == null) ? "" : o.toString();
+		} catch (DbException ex) {
+			value = "?";
+		}
+
+		return value;
+	}
+
+    
     public DbProjectWrapper getParent() {
         return m_parent;
     }

@@ -34,6 +34,17 @@ public class DbTableWrapper {
         m_table = table;
     }
 
+	public String getUdfValue(String udfName) {
+		String value;
+		try {
+			Object o = m_table.getUDF(udfName);
+			value = (o == null) ? "" : o.toString();
+		} catch (DbException ex) {
+			value = "?";
+		}
+		return value;
+	}
+    
     public DbDataModelWrapper getDtModel() {
         return m_dtModel;
     }

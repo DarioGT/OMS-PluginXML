@@ -294,6 +294,10 @@ public class ExportXMLWorker extends Worker {
 //		
 		addChildValue( e, "code", model.getName());
 
+		// Generate Upds
+		DbDataModelWrapper wModel = new DbDataModelWrapper(m_wProj, model);
+ 		generateModelUdfs(xnDm, wModel );
+ 		
 		// Generate Tables 
 		generateTables(xnDm, model);
 
@@ -308,6 +312,7 @@ public class ExportXMLWorker extends Worker {
 		} 
 		enu2.close(); 
 
+		
 	}
 
 
@@ -419,7 +424,7 @@ public class ExportXMLWorker extends Worker {
 		} 
 		enu.close(); 
 
-	    // 
+ 		generateTableUdfs(xnTb, wTable); 
 		generateForeigns( xnTb , model, wTable ); 
 	}
 
@@ -485,7 +490,7 @@ public class ExportXMLWorker extends Worker {
 		
 		s = (wCol.getLength() == 0)? "" : wCol.getLength().toString();  addChildValue( e, "length",s );
 		s = (wCol.getDecLength() == 0)? "" : wCol.getDecLength().toString(); addChildValue( e, "decLength", s , "0");
-		addChildValue( e, "isNullable", wCol.getNullAllowed(), "True");
+		addChildValue( e, "isNullable", wCol.getNullAllowed());
 		
 		s = (wTable.isPrimary(col))? "True" : "False"; addChildValue( e, "isUnique", s, "False");
 
@@ -539,6 +544,51 @@ public class ExportXMLWorker extends Worker {
 		}
 
 	}
+
+	private void generateModelUdfs(Element xnCl, DbDataModelWrapper wObj) throws DbException {
+		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
+		if ( uDfs.isEmpty())  return ;   
+			
+		Element e = xmldoc.createElement("udps");
+		Node xnUdfs = xnCl.appendChild(e);
+		
+		for (DbUdfWrapper udf : uDfs ) {
+			String nValue = wObj.getUdfValue(udf.getName()); 
+			if (nValue.length() > 0 ) {
+			e = xmldoc.createElement( udf.getAlias());
+				e.setAttribute( "text", nValue);
+			xnUdfs.appendChild(e);
+			}
+		}
+
+		if (!(xnUdfs.hasAttributes() || xnUdfs.hasChildNodes() )) {
+			xnCl.removeChild( e );  
+		}
+
+	}
+
+	private void generateTableUdfs(Element xnCl, DbTableWrapper wObj) throws DbException {
+		List<DbUdfWrapper> uDfs = m_wProj.getUdfs();
+		if ( uDfs.isEmpty())  return ;   
+			
+		Element e = xmldoc.createElement("udps");
+		Node xnUdfs = xnCl.appendChild(e);
+		
+		for (DbUdfWrapper udf : uDfs ) {
+			String nValue = wObj.getUdfValue(udf.getName()); 
+			if (nValue.length() > 0 ) {
+			e = xmldoc.createElement( udf.getAlias());
+				e.setAttribute( "text", nValue);
+			xnUdfs.appendChild(e);
+			}
+		}
+
+		if (!(xnUdfs.hasAttributes() || xnUdfs.hasChildNodes() )) {
+			xnCl.removeChild( e );  
+		}
+
+	}
+	
 	private void writeXmlFile(Document doc, String filename) {
 		try {
 
